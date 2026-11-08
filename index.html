@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Misi Kapal Lanun - Sains Tahun 5</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #011627;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      user-select: none;
+    }
+    .pirate-font {
+      font-family: 'Pirata One', cursive;
+      letter-spacing: 1px;
+    }
+    .wood-frame {
+      background: linear-gradient(180deg, #7c4318 0%, #4a2508 100%);
+      border: 3px solid #f59e0b;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.65), inset 0 2px 5px rgba(255,225,130,0.4);
+    }
+    .sand-banner {
+      background: linear-gradient(180deg, #fef3c7 0%, #fde68a 65%, #f59e0b 100%);
+      border: 3px solid #78350f;
+      color: #3b1704;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+    /* Lautan Tropika Sebenar dengan Kesan Ombak */
+    .ocean-viewport {
+      background:
+        radial-gradient(circle at 64% 16%, rgba(250, 204, 21, 0.5) 0%, rgba(56, 189, 248, 0.4) 20%, transparent 35%),
+        radial-gradient(circle at 20% 75%, rgba(14, 165, 233, 0.6) 0%, transparent 28%),
+        radial-gradient(circle at 50% 80%, rgba(2, 132, 199, 0.7) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.6) 0%, transparent 28%),
+        linear-gradient(180deg, #022b42 0%, #035397 40%, #0066cc 70%, #011f35 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes shipBob {
+      0%, 100% { transform: translate(-50%, -72%) rotate(-2deg); }
+      50% { transform: translate(-50%, -78%) rotate(2.5deg); }
+    }
+    .pirate-ship-token {
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: shipBob 2.8s ease-in-out infinite;
+      z-index: 40;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 10px rgba(0,0,0,0.75));
+    }
+    .board-tile {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2.5px solid #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+      z-index: 25;
+      transition: transform 0.2s;
+    }
+    .board-tile:hover {
+      transform: translate(-50%, -50%) scale(1.25);
+    }
+    /* DADU BESAR & CANTIK DENGAN KESAN 3D */
+    .big-dice {
+      width: 68px;
+      height: 68px;
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #cbd5e1 100%);
+      border: 3px solid #b45309;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 3px 6px rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-black: 900;
+      color: #78350f;
+      transition: transform 0.2s;
+    }
+    @keyframes diceRoll3D {
+      0% { transform: scale(1) rotate(0deg); }
+      20% { transform: scale(1.15) rotate(-25deg); }
+      40% { transform: scale(1.2) rotate(30deg); }
+      60% { transform: scale(1.15) rotate(-20deg); }
+      80% { transform: scale(1.05) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+    .rolling-dice-3d {
+      animation: diceRoll3D 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- BAR ATAS -->
+  <header class="wood-frame px-3 py-2 flex flex-wrap items-center justify-between gap-2 z-40">
+    <div class="flex items-center gap-2">
+      <div class="bg-amber-950 border-2 border-amber-400 rounded-xl px-3 py-1 flex items-center gap-2">
+        <span class="pirate-font text-xl md:text-2xl text-amber-300 tracking-wide">
+          Misi Kapal Lanun ke Pulau Harta Karun
+        </span>
+      </div>
+      <span class="hidden md:inline-block text-xs bg-amber-500/20 border border-amber-400 text-amber-200 px-2.5 py-1 rounded-full font-bold">
+        Sains Tahun 5 KSSR
+      </span>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-1.5 text-[11px] font-bold">
+      <span class="px-2 py-0.5 rounded-full bg-red-600 border border-white">Merah: Maju +2</span>
+      <span class="px-2 py-0.5 rounded-full bg-lime-600 border border-white">Hijau: Undur -1</span>
+      <span class="px-2 py-0.5 rounded-full bg-yellow-500 text-amber-950 border border-white">Kuning: +15m</span>
+      <span class="px-2 py-0.5 rounded-full bg-orange-600 border border-white">Jingga: -5m</span>
+    </div>
+
+    <div class="flex items-center gap-2 text-xs">
+      <div class="bg-amber-950/90 border border-amber-400 px-2.5 py-1 rounded-lg">
+        Kapten: <span id="hudPlayerName" class="font-extrabold text-amber-300">Belum Daftar</span>
+      </div>
+      <div class="bg-amber-950/90 border border-amber-400 px-2.5 py-1 rounded-lg">
+        Markah: <span id="hudPlayerScore" class="font-extrabold text-yellow-400">0</span>
+      </div>
+      <div class="bg-amber-950/90 border border-amber-400 px-2.5 py-1 rounded-lg">
+        Petak: <span id="hudPlayerTile" class="font-extrabold text-cyan-300">0 / 30</span>
+      </div>
+      <button onclick="openStudentModal()" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-extrabold px-2.5 py-1 rounded-lg shadow transition">
+        + Murid Baru
+      </button>
+    </div>
+  </header>
+
+  <!-- RUANG UTAMA -->
+  <main class="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-2.5 p-2.5">
+
+    <!-- KIRI/TENGAH: PETA KEPULAUAN SEBENAR & DADU BESAR -->
+    <section class="lg:col-span-3 ocean-viewport rounded-2xl border-4 border-amber-500 shadow-2xl relative min-h-[600px] overflow-hidden">
+
+      <!-- SEPANDUK KIRI ATAS -->
+      <div class="absolute top-2.5 left-2.5 z-30 pointer-events-none">
+        <div class="wood-frame rounded-2xl px-3.5 py-1.5 border-2 border-amber-400 shadow-xl">
+          <div class="text-[10px] uppercase tracking-widest text-amber-200 font-extrabold">Sains Tahun 5 KSSR</div>
+          <div class="pirate-font text-xl md:text-2xl text-amber-300 drop-shadow">Misi Kapal Lanun</div>
+          <div class="text-[11px] font-extrabold text-amber-100">3 Soalan + 1 KBAT Setiap Hentian</div>
+        </div>
+      </div>
+
+      <!-- KOMPAS KANAN ATAS -->
+      <div class="absolute top-2.5 right-2.5 z-30 pointer-events-none">
+        <svg viewBox="0 0 100 100" class="w-16 h-16 drop-shadow-lg">
+          <circle cx="50" cy="50" r="42" fill="rgba(15, 23, 42, 0.75)" stroke="#f59e0b" stroke-width="3"/>
+          <polygon points="50,10 58,42 50,35 42,42" fill="#facc15"/>
+          <polygon points="50,90 58,58 50,65 42,58" fill="#fde68a"/>
+          <polygon points="10,50 42,42 35,50 42,58" fill="#fde68a"/>
+          <polygon points="90,50 58,42 65,50 58,58" fill="#fde68a"/>
+          <circle cx="50" cy="50" r="6" fill="#f59e0b"/>
+          <text x="50" y="8" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">U</text>
+          <text x="50" y="98" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">S</text>
+          <text x="5" y="53" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">B</text>
+          <text x="95" y="53" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">T</text>
+        </svg>
+      </div>
+
+      <!-- GRAFIK PULAU REALISTIK & TERPERINCI -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 620" preserveAspectRatio="none">
+        <defs>
+          <!-- Gradien Pasir Pulau Sebenar -->
+          <radialGradient id="realIslandSand" cx="50%" cy="55%" r="50%">
+            <stop offset="0%" stop-color="#fef08a"/>
+            <stop offset="65%" stop-color="#eab308"/>
+            <stop offset="85%" stop-color="#ca8a04"/>
+            <stop offset="100%" stop-color="#78350f" stop-opacity="0.8"/>
+          </radialGradient>
+          <!-- Gradien Hutan Gunung Hijau -->
+          <radialGradient id="mountainGreen" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="#86efac"/>
+            <stop offset="50%" stop-color="#22c55e"/>
+            <stop offset="100%" stop-color="#14532d"/>
+          </radialGradient>
+          <!-- Gradien Air Terjun -->
+          <linearGradient id="waterfallBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#e0f2fe"/>
+            <stop offset="50%" stop-color="#38bdf8"/>
+            <stop offset="100%" stop-color="#0284c7"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Buih Ombak Sekeliling Pulau -->
+        <ellipse cx="115" cy="500" rx="120" ry="65" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="465" cy="495" rx="115" ry="62" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="760" cy="425" rx="110" ry="58" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="860" cy="255" rx="110" ry="58" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="535" cy="300" rx="120" ry="65" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="265" cy="250" rx="115" ry="62" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
+        <ellipse cx="620" cy="115" rx="160" ry="75" fill="none" stroke="#fde047" stroke-width="6" opacity="0.65"/>
+
+        <!-- Garisan Laluan Pelayaran Berputus-putus -->
+        <path d="M 120 490 C 230 520, 350 520, 465 495 C 580 480, 670 460, 760 425 C 840 380, 880 320, 860 255 C 770 265, 650 285, 535 300 C 420 290, 340 275, 265 250 C 370 180, 480 140, 620 115"
+              fill="none" stroke="#ffffff" stroke-width="5" stroke-dasharray="10,10" stroke-linecap="round" opacity="0.9"/>
+
+        <!-- Pelabuhan Permulaan (Dermaga Kayu & Pondok) -->
+        <g transform="translate(30, 415)">
+          <ellipse cx="90" cy="85" rx="98" ry="52" fill="url(#realIslandSand)"/>
+          <ellipse cx="85" cy="75" rx="78" ry="38" fill="url(#mountainGreen)"/>
+          <rect x="45" y="35" width="65" height="40" rx="4" fill="#78350f" stroke="#451a03" stroke-width="3"/>
+          <polygon points="35,38 77,10 120,38" fill="#9a3412" stroke="#451a03" stroke-width="3"/>
+          <line x1="105" y1="-5" x2="105" y2="45" stroke="#451a03" stroke-width="4"/>
+          <polygon points="105,-5 145,5 105,16" fill="#dc2626"/>
+        </g>
+
+        <!-- 1. Pulau Teka-Teki (Gunung Berapi Kecil & Monolit Purba) -->
+        <g transform="translate(375, 425)">
+          <ellipse cx="90" cy="70" rx="98" ry="50" fill="url(#realIslandSand)"/>
+          <path d="M 50 65 Q 80 15 110 65 Z" fill="#78716c" stroke="#44403c" stroke-width="2"/>
+          <polygon points="72,12 108,8 112,62 68,62" fill="#7e22ce" stroke="#d8b4fe" stroke-width="3"/>
+          <text x="90" y="48" text-anchor="middle" fill="#fde047" font-size="34" font-weight="900">?</text>
+        </g>
+
+        <!-- 2. Pulau Sains (Pulau Berhutan Lebat & Kelalang Sains) -->
+        <g transform="translate(675, 355)">
+          <ellipse cx="85" cy="70" rx="95" ry="48" fill="url(#realIslandSand)"/>
+          <ellipse cx="85" cy="62" rx="75" ry="36" fill="url(#mountainGreen)"/>
+          <path d="M 60 55 Q 85 20 110 55 Z" fill="#15803d"/>
+          <polygon points="77,15 93,15 93,28 112,62 58,62 77,28" fill="url(#waterfallBlue)" stroke="#ffffff" stroke-width="3"/>
+        </g>
+
+        <!-- 3. Pulau Cabaran (Pulau Tebing Batu & Sasaran Memanah) -->
+        <g transform="translate(775, 185)">
+          <ellipse cx="85" cy="70" rx="95" ry="48" fill="url(#realIslandSand)"/>
+          <path d="M 45 68 Q 85 20 125 68 Z" fill="#57534e" stroke="#292524" stroke-width="2"/>
+          <circle cx="90" cy="40" r="22" fill="#dc2626" stroke="#ffffff" stroke-width="3"/>
+          <circle cx="90" cy="40" r="14" fill="#ffffff"/>
+          <circle cx="90" cy="40" r="6" fill="#dc2626"/>
+        </g>
+
+        <!-- 4. Pulau Strategi (Kuil Batu Purba & Tangga Bertingkat) -->
+        <g transform="translate(445, 225)">
+          <ellipse cx="90" cy="72" rx="100" ry="52" fill="url(#realIslandSand)"/>
+          <ellipse cx="90" cy="64" rx="80" ry="40" fill="url(#mountainGreen)"/>
+          <rect x="62" y="42" width="56" height="22" fill="#78716c" stroke="#44403c" stroke-width="2"/>
+          <rect x="70" y="26" width="40" height="18" fill="#a8a29e" stroke="#44403c" stroke-width="2"/>
+        </g>
+
+        <!-- 5. Pulau Kerjasama (Kubu Kayu & Pesisir Pantai Cantik) -->
+        <g transform="translate(175, 180)">
+          <ellipse cx="90" cy="70" rx="98" ry="50" fill="url(#realIslandSand)"/>
+          <ellipse cx="90" cy="62" rx="78" ry="38" fill="url(#mountainGreen)"/>
+          <rect x="62" y="32" width="45" height="30" fill="#92400e" stroke="#451a03" stroke-width="2"/>
+          <polygon points="55,34 85,12 115,34" fill="#b45309" stroke="#451a03" stroke-width="2"/>
+        </g>
+
+        <!-- 6. Pulau Harta Karun (Gunung Kembar, Air Terjun & Peti Emas) -->
+        <g transform="translate(485, 30)">
+          <circle cx="135" cy="65" r="75" fill="#fde047" opacity="0.35"/>
+          <ellipse cx="135" cy="85" rx="138" ry="58" fill="url(#realIslandSand)"/>
+          <ellipse cx="135" cy="75" rx="118" ry="46" fill="url(#mountainGreen)"/>
+          <!-- Gunung Kembar -->
+          <path d="M 75 80 Q 110 20 140 80 Q 170 25 205 80 Z" fill="#047857" stroke="#065f46" stroke-width="2"/>
+          <!-- Air Terjun Menengah -->
+          <path d="M 125 45 Q 120 70 115 100 L 135 102 Q 140 70 135 45 Z" fill="url(#waterfallBlue)" opacity="0.95"/>
+          <!-- Peti Harta Karun Emas Besar -->
+          <rect x="110" y="34" width="52" height="34" rx="5" fill="#ca8a04" stroke="#fef08a" stroke-width="3"/>
+          <path d="M 110 34 Q 136 16 162 34 Z" fill="#eab308" stroke="#fef08a" stroke-width="3"/>
+          <rect x="131" y="42" width="10" height="14" rx="2" fill="#fef08a"/>
+        </g>
+      </svg>
+
+      <!-- LABEL NAMA PULAU SEBENAR -->
+      <div class="absolute inset-0 pointer-events-none z-20">
+        <div style="left:12%; top:88%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[9px]">M</span>
+          <span>Pelabuhan Permulaan</span>
+        </div>
+        <div style="left:46%; top:88%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] border border-white">1</span>
+          <span>Pulau Teka-Teki</span>
+        </div>
+        <div style="left:76%; top:76%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] border border-white">2</span>
+          <span>Pulau Sains</span>
+        </div>
+        <div style="left:86%; top:48%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] border border-white">3</span>
+          <span>Pulau Cabaran</span>
+        </div>
+        <div style="left:54%; top:56%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] border border-white">4</span>
+          <span>Pulau Strategi</span>
+        </div>
+        <div style="left:26%; top:47%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] border border-white">5</span>
+          <span>Pulau Kerjasama</span>
+        </div>
+        <div style="left:62%; top:26%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-3 py-1 rounded-xl font-extrabold text-xs flex items-center gap-1.5 ring-4 ring-yellow-300">
+          <span class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center text-xs border border-white">6</span>
+          <span>Pulau Harta Karun (TAMAT)</span>
+        </div>
+      </div>
+
+      <!-- PETAK LALUAN (1 - 30) -->
+      <div id="boardTilesContainer" class="absolute inset-0 z-20"></div>
+
+      <!-- KAPAL LANUN 3D -->
+      <div id="pirateShipToken" class="pirate-ship-token" style="left: 12%; top: 78%;">
+        <svg viewBox="0 0 140 140" class="w-full h-full">
+          <ellipse cx="70" cy="122" rx="46" ry="10" fill="#bae6fd" opacity="0.75"/>
+          <path d="M 22 86 L 118 86 L 100 118 L 40 118 Z" fill="#78350f" stroke="#271202" stroke-width="3.5"/>
+          <path d="M 26 95 L 114 95" stroke="#f59e0b" stroke-width="3.5"/>
+          <circle cx="50" cy="106" r="4.5" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="70" cy="106" r="4.5" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="90" cy="106" r="4.5" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+          <rect x="67" y="16" width="6" height="70" fill="#451a03"/>
+          <rect x="38" y="34" width="4" height="52" fill="#451a03"/>
+          <path d="M 24 42 Q 42 36 56 42 Q 62 60 54 78 Q 40 74 26 78 Z" fill="#dc2626" stroke="#ffffff" stroke-width="2"/>
+          <path d="M 40 28 Q 72 18 108 28 Q 116 54 104 78 Q 72 70 42 78 Q 32 54 40 28 Z" fill="#ffffff" stroke="#991b1b" stroke-width="3"/>
+          <circle cx="74" cy="50" r="10" fill="#111827"/>
+          <circle cx="70" cy="49" r="2.3" fill="#ffffff"/>
+          <circle cx="78" cy="49" r="2.3" fill="#ffffff"/>
+          <path d="M 62 63 L 86 55 M 62 55 L 86 63" stroke="#111827" stroke-width="3.5" stroke-linecap="round"/>
+          <polygon points="70,14 102,20 70,26" fill="#dc2626"/>
+        </svg>
+      </div>
+
+      <!-- KAWALAN DADU BESAR & CANTIK (KIRI BAWAH) -->
+      <div class="absolute bottom-2.5 left-2.5 z-30 flex items-center gap-3 wood-frame p-3 rounded-2xl">
+        <button id="rollDiceBtn" onclick="rollDiceTurn()"
+                class="bg-gradient-to-b from-yellow-300 via-amber-400 to-amber-600 hover:from-yellow-200 hover:to-amber-500 text-amber-950 font-extrabold px-5 py-3 rounded-xl shadow-xl border-2 border-white flex items-center gap-3.5 transition active:scale-95">
+          <!-- Dadu Besar -->
+          <div id="diceVisual" class="big-dice">
+            🎲
+          </div>
+          <div class="text-left">
+            <div class="text-base leading-tight font-black">BALING DADU</div>
+            <div class="text-[11px] font-bold text-amber-900">Jawab 3 Soalan Sains</div>
+          </div>
+        </button>
+
+        <div id="turnMessage" class="text-xs font-bold text-amber-100 max-w-[210px] leading-snug">
+          Klik dadu besar untuk belayar! Setiap hentian ada 3 soalan Sains Tahun 5 (termasuk 1 KBAT).
+        </div>
+      </div>
+
+      <!-- PETA MISI KANAN BAWAH -->
+      <div class="absolute bottom-2.5 right-2.5 z-30 sand-banner rounded-2xl p-2.5 w-52 text-xs hidden sm:block">
+        <div class="wood-frame text-amber-200 font-extrabold text-center py-0.5 rounded-lg mb-1.5 text-[11px] uppercase">
+          Peta Misi
+        </div>
+        <div class="space-y-1 font-bold text-[10px]">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-600 border border-white inline-block"></span>
+            <span>Stesen Pulau (1 - 6)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+            <span>Merah: Maju +2 Tapak</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+            <span>Kuning: Bonus +15 Markah</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- KANAN: RANKING PEMAIN -->
+    <aside class="wood-frame rounded-2xl p-3.5 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between border-b-2 border-amber-400 pb-2 mb-2.5">
+          <div>
+            <h2 class="pirate-font text-xl text-amber-300">Ranking Pemain</h2>
+            <p class="text-[11px] text-amber-100">Kedudukan Markah Murid</p>
+          </div>
+          <button onclick="clearRanking()" class="text-[11px] bg-red-800 hover:bg-red-700 text-red-100 px-2 py-1 rounded-lg font-bold">
+            Reset
+          </button>
+        </div>
+
+        <div id="rankingContainer" class="space-y-1.5 max-h-[380px] overflow-y-auto pr-1"></div>
+      </div>
+
+      <div class="mt-3 bg-amber-950/90 border border-amber-500 rounded-xl p-2.5 text-[11px] space-y-1 text-amber-100">
+        <div class="font-extrabold text-amber-300">Silibus Sains Tahun 5:</div>
+        <div>1. Manusia (Rangka & Darah)</div>
+        <div>2. Haiwan & Tumbuhan</div>
+        <div>3. Elektrik & Haba</div>
+        <div>4. Jirim & Pengaratan</div>
+        <div>5. Fasa Bulan & Buruj</div>
+        <div>6. Mesin (Tuas & Takal)</div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- MODAL PENDAFTARAN MURID -->
+  <div id="studentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+    <div class="sand-banner rounded-2xl max-w-md w-full p-5">
+      <div class="wood-frame text-center py-2 rounded-xl mb-3">
+        <h2 class="pirate-font text-2xl text-amber-300">Pendaftaran Kapten</h2>
+      </div>
+      <p class="text-xs font-bold text-center mb-3">
+        Sila tulis nama murid sebelum memulakan pelayaran!
+      </p>
+
+      <label class="block text-xs font-extrabold uppercase mb-1">Nama Murid:</label>
+      <input id="playerNameInput" type="text" placeholder="Contoh: Rayyan / Aisyah"
+             class="w-full px-3.5 py-2.5 rounded-xl border-2 border-amber-900 bg-white text-amber-950 font-extrabold mb-4 focus:outline-none" />
+
+      <button onclick="registerAndStart()"
+              class="w-full wood-frame hover:brightness-110 text-amber-300 font-extrabold py-2.5 rounded-xl text-base transition">
+        Mula Pelayaran Misi
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL SOALAN (3 SOALAN + 1 KBAT) -->
+  <div id="questionModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="sand-banner rounded-2xl max-w-2xl w-full p-5">
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-amber-900 pb-2.5 mb-3">
+        <div>
+          <span id="modalZoneBadge" class="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-900 text-amber-200">
+            Zon Pulau 1
+          </span>
+          <h3 id="modalIslandTitle" class="pirate-font text-2xl text-amber-950 mt-0.5">
+            Cabaran Pulau Teka-Teki
+          </h3>
+        </div>
+        <div class="text-right">
+          <span id="modalQuestionBadge" class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-blue-800 text-white">
+            Soalan 1 / 3 • Konsep (+10m)
+          </span>
+          <div id="modalProgressText" class="text-[11px] font-extrabold text-amber-900 mt-0.5">
+            Soalan 3 ialah Soalan KBAT
+          </div>
+        </div>
+      </div>
+
+      <p id="modalQuestionText" class="text-sm md:text-base font-extrabold text-amber-950 mb-3 leading-snug"></p>
+
+      <div id="modalOptionsBox" class="space-y-2 mb-3"></div>
+
+      <div id="modalFeedbackBox" class="hidden p-3 rounded-xl text-xs font-bold mb-3"></div>
+
+      <div class="flex justify-end">
+        <button id="modalNextBtn" onclick="nextQuestionStep()"
+                class="hidden wood-frame text-amber-200 font-extrabold px-5 py-2 rounded-xl text-sm">
+          Soalan Seterusnya →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KEMENANGAN -->
+  <div id="finishModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+    <div class="sand-banner rounded-2xl max-w-md w-full p-5 text-center">
+      <div class="wood-frame py-2.5 rounded-xl mb-3">
+        <h2 class="pirate-font text-3xl text-amber-300">Pulau Harta Karun Ditawan!</h2>
+      </div>
+      <p class="text-xs font-bold mb-3">
+        Tahniah! Kapal lanun anda berjaya tiba di Petak 30 dan membuka Peti Harta Karun Emas!
+      </p>
+
+      <div class="bg-amber-100 border-2 border-amber-800 rounded-xl p-3 mb-4">
+        <div class="text-xs font-extrabold">Kapten: <span id="finishPlayerName"></span></div>
+        <div class="text-2xl font-black text-amber-900 mt-1">Markah Akhir: <span id="finishPlayerScore"></span></div>
+      </div>
+
+      <div class="flex gap-2.5">
+        <button onclick="closeFinishAndNewStudent()" class="flex-1 wood-frame text-amber-300 font-extrabold py-2.5 rounded-xl text-sm">
+          Murid Lain
+        </button>
+        <button onclick="playAgainSameStudent()" class="flex-1 bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold py-2.5 rounded-xl border-2 border-white text-sm">
+          Main Semula
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BOARD_TILES = [
+      { id: 0,  x: 12, y: 78, type: "start",   zone: 1 },
+      { id: 1,  x: 19, y: 81, type: "normal",  zone: 1 },
+      { id: 2,  x: 26, y: 83, type: "forward", zone: 1 },
+      { id: 3,  x: 33, y: 83, type: "normal",  zone: 1 },
+      { id: 4,  x: 40, y: 82, type: "bonus",   zone: 1 },
+      { id: 5,  x: 46, y: 79, type: "island",  zone: 1, islandName: "Pulau 1: Pulau Teka-Teki" },
+      { id: 6,  x: 53, y: 78, type: "normal",  zone: 2 },
+      { id: 7,  x: 59, y: 76, type: "penalty", zone: 2 },
+      { id: 8,  x: 65, y: 74, type: "normal",  zone: 2 },
+      { id: 9,  x: 70, y: 71, type: "forward", zone: 2 },
+      { id: 10, x: 76, y: 68, type: "island",  zone: 2, islandName: "Pulau 2: Pulau Sains" },
+      { id: 11, x: 81, y: 63, type: "normal",  zone: 3 },
+      { id: 12, x: 85, y: 58, type: "bonus",   zone: 3 },
+      { id: 13, x: 87, y: 52, type: "back",    zone: 3 },
+      { id: 14, x: 87, y: 46, type: "normal",  zone: 3 },
+      { id: 15, x: 86, y: 40, type: "island",  zone: 3, islandName: "Pulau 3: Pulau Cabaran" },
+      { id: 16, x: 79, y: 42, type: "normal",  zone: 4 },
+      { id: 17, x: 73, y: 44, type: "forward", zone: 4 },
+      { id: 18, x: 66, y: 46, type: "normal",  zone: 4 },
+      { id: 19, x: 60, y: 47, type: "penalty", zone: 4 },
+      { id: 20, x: 54, y: 48, type: "island",  zone: 4, islandName: "Pulau 4: Pulau Strategi" },
+      { id: 21, x: 47, y: 47, type: "normal",  zone: 5 },
+      { id: 22, x: 41, y: 45, type: "bonus",   zone: 5 },
+      { id: 23, x: 35, y: 43, type: "normal",  zone: 5 },
+      { id: 24, x: 30, y: 41, type: "forward", zone: 5 },
+      { id: 25, x: 26, y: 39, type: "island",  zone: 5, islandName: "Pulau 5: Pulau Kerjasama" },
+      { id: 26, x: 33, y: 33, type: "normal",  zone: 6 },
+      { id: 27, x: 40, y: 28, type: "bonus",   zone: 6 },
+      { id: 28, x: 47, y: 24, type: "normal",  zone: 6 },
+      { id: 29, x: 54, y: 21, type: "normal",  zone: 6 },
+      { id: 30, x: 62, y: 18, type: "finish",  zone: 6, islandName: "Pulau 6: Pulau Harta Karun" }
+    ];
+
+    const ZONE_QUESTIONS = {
+      1: {
+        title: "Pulau Teka-Teki • Manusia (Rangka & Peredaran Darah)",
+        conceptPool: [
+          { q: "Apakah fungsi utama tulang rusuk dalam sistem rangka manusia?", options: ["Melindungi otak", "Melindungi organ dalaman seperti peparu dan jantung", "Menyokong berat badan", "Membolehkan jari membengkok"], answer: 1, exp: "Tulang rusuk melindungi organ lembut utama di bahagian dada iaitu jantung dan peparu." },
+          { q: "Bahagian manakah yang menghubungkan dua tulang untuk membolehkan pergerakan berlaku?", options: ["Sendi", "Otot jantung", "Salur darah", "Peparu"], answer: 0, exp: "Sendi ialah tempat pertemuan dua atau lebih tulang yang membolehkan anggota badan bergerak." },
+          { q: "Organ manakah yang mengepam darah ke peparu dan ke seluruh tubuh manusia?", options: ["Ginjal", "Perut", "Jantung", "Otak"], answer: 2, exp: "Jantung bertindak mengepam darah tanpa henti ke seluruh tubuh." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Mengapakah kecederaan pada tulang belakang sangat berbahaya sehingga boleh menyebabkan kelumpuhan?", options: ["Kerana tulang belakang mengepam darah ke kaki", "Kerana tulang belakang melindungi saraf tunjang yang menghantar isyarat pergerakan dari otak", "Kerana tulang belakang menghasilkan oksigen", "Kerana semua sendi lutut bersambung pada leher"], answer: 1, exp: "Info KBAT: Tulang belakang melindungi saraf tunjang. Jika tercedera, isyarat dari otak ke anggota badan akan terputus." }
+        ]
+      },
+      2: {
+        title: "Pulau Sains • Kemandirian Haiwan & Tumbuhan",
+        conceptPool: [
+          { q: "Bagaimanakah tenggiling dan ulat gonggok melindungi diri daripada musuh?", options: ["Memutuskan anggota badan", "Menggulungkan diri", "Menyemburkan dakwat hitam", "Mempunyai sengat beracun"], answer: 1, exp: "Tenggiling dan ulat gonggok menggulungkan diri apabila terancam." },
+          { q: "Apakah ciri khas buah kelapa yang membolehkannya dipencarkan melalui air?", options: ["Mempunyai cangkuk", "Mempunyai sabut berongga udara dan kulit kalis air", "Bersaiz halus dan berbulu", "Meletup apabila kering"], answer: 1, exp: "Sabut berongga udara membolehkan buah kelapa terapung di permukaan air." },
+          { q: "Pokok keembung dan pokok getah memencarkan biji benih melalui...", options: ["Aliran air", "Tiupan angin", "Mekanisme letupan", "Haiwan"], answer: 2, exp: "Buah getah dan keembung mengering dan meletup untuk melontarkan biji benih." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Dalam siratan makanan di sawah padi (Padi → Tikus → Ular → Helang), apakah yang berlaku kepada hasil padi jika semua ular ditangkap?", options: ["Hasil padi meningkat mendadak", "Populasi tikus membiak banyak dan memusnahkan tanaman padi sehingga hasil padi merosot", "Burung helang makan pokok padi", "Tiada perubahan berlaku"], answer: 1, exp: "Info KBAT: Tanpa ular sebagai pemangsa, populasi tikus meningkat mendadak dan merosakkan tanaman padi." }
+        ]
+      },
+      3: {
+        title: "Pulau Cabaran • Elektrik & Haba",
+        conceptPool: [
+          { q: "Litar manakah yang mempunyai nyalaan mentol sama terang walaupun bilangan mentol ditambah?", options: ["Litar bersiri", "Litar selari", "Litar terbuka", "Litar pintas"], answer: 1, exp: "Dalam litar selari, setiap cabang mentol menerima voltan yang sama." },
+          { q: "Apakah yang berlaku kepada suhu sesuatu bahan apabila bahan itu menerima haba?", options: ["Suhu menurun", "Suhu meningkat", "Suhu kekal sifar", "Bahan terus membeku"], answer: 1, exp: "Suhu bahan meningkat apabila menerima haba." },
+          { q: "Apakah unit piawai bagi menyukat suhu?", options: ["Mililiter (ml)", "Darjah Celsius (°C)", "Gram (g)", "Meter (m)"], answer: 1, exp: "Unit piawai suhu ialah darjah Celsius (°C)." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Mengapakah kabel elektrik pada tiang elektrik dipasang secara kendur sedikit dan bukannya tegang?", options: ["Kerana tiada alatan menegangkan kabel", "Untuk membolehkan kabel mengecut pada waktu malam yang sejuk tanpa putus", "Untuk mengelakkan burung hinggap", "Supaya arus elektrik mengalir perlahan"], answer: 1, exp: "Info KBAT: Pada waktu sejuk, kabel logam kehilangan haba dan mengecut. Ruang kendur mengelakkan kabel daripada putus." }
+        ]
+      },
+      4: {
+        title: "Pulau Strategi • Jirim & Pengaratan",
+        conceptPool: [
+          { q: "Bahan manakah yang mempunyai bentuk tetap dan tidak mengikut bentuk bekas?", options: ["Air minuman", "Udara di dalam belon", "Guli kaca (Pepejal)", "Minyak masak"], answer: 2, exp: "Pepejal mempunyai bentuk, jisim dan isi padu yang tetap." },
+          { q: "Apakah dua faktor utama yang menyebabkan besi berkarat?", options: ["Cahaya matahari dan angin", "Kehadiran air dan udara (oksigen)", "Kehadiran minyak dan cat", "Suhu sejuk"], answer: 1, exp: "Besi berkarat apabila terdedah kepada air dan oksigen." },
+          { q: "Objek manakah yang BOLEH berkarat jika dibiarkan terdedah kepada hujan?", options: ["Sudu plastik", "Paku besi", "Cincin emas", "Botol kaca"], answer: 1, exp: "Objek daripada besi akan berkarat apabila terdedah kepada air dan udara." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Sebiji cawan berisi air ais diletakkan di atas meja. Titisan air terbentuk di LUAR dinding cawan. Dari manakah datangnya titisan air itu?", options: ["Air ais meresap menembusi dinding cawan", "Wap air di udara kehilangan haba apabila terkena cawan sejuk lalu terkondensasi menjadi titisan air", "Ais mendidih dan melimpah keluar", "Kaca cawan melebur menjadi air"], answer: 1, exp: "Info KBAT: Wap air di udara mengalami kondensasi apabila terkena permukaan luar cawan yang sejuk." }
+        ]
+      },
+      5: {
+        title: "Pulau Kerjasama • Fasa Bulan & Buruj",
+        conceptPool: [
+          { q: "Bagaimanakah Bulan kelihatan bercahaya pada waktu malam?", options: ["Bulan memantulkan cahaya Bumi", "Bulan memantulkan cahaya Matahari ke Bumi", "Bulan mengeluarkan cahaya sendiri", "Bulan menyerap cahaya bintang"], answer: 1, exp: "Bulan memantulkan cahaya Matahari ke Bumi." },
+          { q: "Buruj manakah yang berbentuk seperti layang-layang dan menunjuk ke arah Selatan?", options: ["Buruj Biduk", "Buruj Pari", "Buruj Belantik", "Buruj Skorpio"], answer: 1, exp: "Buruj Pari berbentuk layang-layang dan sentiasa menunjuk ke arah Selatan." },
+          { q: "Fasa Bulan Purnama berlaku pada setiap...", options: ["1 haribulan Qamari", "14 hingga 15 haribulan Takwim Qamari", "7 haribulan Qamari", "28 haribulan Qamari"], answer: 1, exp: "Bulan Purnama muncul pada pertengahan bulan Takwim Qamari (14-15 haribulan)." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Sebuah kapal nelayan kehilangan kompas pada waktu malam. Mereka ternampak Buruj Biduk di langit. Bagaimanakah mereka menentukan arah?", options: ["Buruj Biduk menunjuk ke arah Selatan", "Hujung mangkuk Buruj Biduk sentiasa menunjuk ke arah Utara", "Mengikut pergerakan awan", "Menunggu sehingga Anak Bulan muncul"], answer: 1, exp: "Info KBAT: Buruj Biduk sentiasa menunjuk ke arah Utara." }
+        ]
+      },
+      6: {
+        title: "Pulau Harta Karun • Mesin (Tuas & Takal)",
+        conceptPool: [
+          { q: "Apakah tiga komponen utama pada sistem mesin ringkas tuas?", options: ["Beban, daya dan fulkrum", "Takal, tali dan roda", "Skru, baji dan satah condong", "Wayar, suis dan bateri"], answer: 0, exp: "Tuas melibatkan beban, daya dan fulkrum." },
+          { q: "Mesin ringkas manakah yang digunakan pada puncak tiang bendera sekolah?", options: ["Baji", "Takal", "Gear", "Skru"], answer: 1, exp: "Takal digunakan untuk menaikkan bendera dengan menarik tali ke bawah." },
+          { q: "Gunting dan kereta sorong merupakan contoh...", options: ["Mesin ringkas tunggal", "Mesin kompleks", "Bahan bukan logam", "Tenaga boleh baharu"], answer: 1, exp: "Mesin kompleks ialah gabungan lebih daripada satu mesin ringkas." }
+        ],
+        hotsPool: [
+          { q: "[KBAT] Kapten Lanun ingin mengumpil batu besar menggunakan kayu sebagai tuas dan batu kecil sebagai fulkrum. Di manakah batu kecil (fulkrum) patut diletakkan supaya daya paling sedikit diperlukan?", options: ["Sangat jauh daripada batu besar (beban)", "Sedekat yang mungkin dengan batu besar (beban)", "Di atas tangan Kapten", "Di belakang Kapten"], answer: 1, exp: "Info KBAT: Semakin dekat fulkrum dengan beban, semakin sedikit daya diperlukan." }
+        ]
+      }
+    };
+
+    let currentPlayer = { name: "", score: 0, tile: 0 };
+    let isMoving = false;
+    let activeTurnQuestions = [];
+    let currentQStep = 0;
+
+    let rankings = JSON.parse(localStorage.getItem("pirateSainsTahun5Rankings")) || [
+      { name: "Muhammad Danish", score: 250, tile: 30 },
+      { name: "Nur Aisyah", score: 195, tile: 25 },
+      { name: "Putri Balqis", score: 145, tile: 18 }
+    ];
+
+    function renderBoardTiles() {
+      const container = document.getElementById("boardTilesContainer");
+      container.innerHTML = "";
+      BOARD_TILES.forEach(t => {
+        if (t.id === 0) return;
+        const el = document.createElement("div");
+        el.style.left = `${t.x}%`;
+        el.style.top = `${t.y}%`;
+
+        let bgClass = "bg-sky-700 text-white";
+        if (t.type === "island" || t.type === "finish") {
+          bgClass = "bg-red-600 text-yellow-200 ring-2 ring-amber-300 w-8 h-8 text-xs";
+        } else if (t.type === "forward") {
+          bgClass = "bg-rose-500 text-white";
+        } else if (t.type === "back") {
+          bgClass = "bg-lime-600 text-white";
+        } else if (t.type === "bonus") {
+          bgClass = "bg-yellow-400 text-amber-950";
+        } else if (t.type === "penalty") {
+          bgClass = "bg-orange-500 text-white";
+        }
+
+        el.className = `board-tile ${bgClass}`;
+        el.textContent = t.id;
+        container.appendChild(el);
+      });
+    }
+
+    function updateShipPosition() {
+      const tileObj = BOARD_TILES[currentPlayer.tile] || BOARD_TILES[0];
+      const ship = document.getElementById("pirateShipToken");
+      ship.style.left = `${tileObj.x}%`;
+      ship.style.top = `${tileObj.y}%`;
+
+      document.getElementById("hudPlayerName").textContent = currentPlayer.name || "Belum Daftar";
+      document.getElementById("hudPlayerScore").textContent = currentPlayer.score;
+      document.getElementById("hudPlayerTile").textContent = `${currentPlayer.tile} / 30`;
+    }
+
+    function rollDiceTurn() {
+      if (!currentPlayer.name) {
+        openStudentModal();
+        return;
+      }
+      if (isMoving) return;
+      if (currentPlayer.tile >= 30) {
+        openFinishModal();
+        return;
+      }
+
+      isMoving = true;
+      const diceVis = document.getElementById("diceVisual");
+      diceVis.classList.add("rolling-dice-3d");
+
+      let rollCount = 0;
+      const rollTimer = setInterval(() => {
+        diceVis.textContent = Math.floor(Math.random() * 6) + 1;
+        rollCount++;
+        if (rollCount >= 12) {
+          clearInterval(rollTimer);
+          diceVis.classList.remove("rolling-dice-3d");
+          const finalRoll = Math.floor(Math.random() * 6) + 1;
+          diceVis.textContent = finalRoll;
+          animateShipSteps(finalRoll);
+        }
+      }, 60);
+    }
+
+    function animateShipSteps(steps) {
+      let targetTile = Math.min(30, currentPlayer.tile + steps);
+      document.getElementById("turnMessage").textContent = `Dadu: ${steps}! Belayar ke Petak ${targetTile}...`;
+
+      const stepInterval = setInterval(() => {
+        if (currentPlayer.tile < targetTile) {
+          currentPlayer.tile++;
+          updateShipPosition();
+        } else {
+          clearInterval(stepInterval);
+          handleTileSpecialEffect();
+        }
+      }, 300);
+    }
+
+    function handleTileSpecialEffect() {
+      const landed = BOARD_TILES[currentPlayer.tile];
+      if (landed.type === "forward" && currentPlayer.tile < 30) {
+        currentPlayer.tile = Math.min(30, currentPlayer.tile + 2);
+        updateShipPosition();
+      } else if (landed.type === "back" && currentPlayer.tile > 1) {
+        currentPlayer.tile = Math.max(1, currentPlayer.tile - 1);
+        updateShipPosition();
+      } else if (landed.type === "bonus") {
+        currentPlayer.score += 15;
+        updateShipPosition();
+      } else if (landed.type === "penalty") {
+        currentPlayer.score = Math.max(0, currentPlayer.score - 5);
+        updateShipPosition();
+      }
+
+      saveRanking();
+      setTimeout(() => launchThreeQuestionsForCurrentZone(), 500);
+    }
+
+    function launchThreeQuestionsForCurrentZone() {
+      const landed = BOARD_TILES[currentPlayer.tile];
+      const zoneId = landed.zone || 1;
+      const bank = ZONE_QUESTIONS[zoneId];
+
+      const shuffledConcept = [...bank.conceptPool].sort(() => Math.random() - 0.5);
+      const shuffledHots = [...bank.hotsPool].sort(() => Math.random() - 0.5);
+
+      activeTurnQuestions = [
+        { ...shuffledConcept[0], points: 10, label: "Soalan 1 / 3 • Konsep (+10m)", isHots: false },
+        { ...shuffledConcept[1], points: 15, label: "Soalan 2 / 3 • Aplikasi (+15m)", isHots: false },
+        { ...shuffledHots[0],    points: 25, label: "Soalan 3 / 3 • Cabaran KBAT (+25m)", isHots: true }
+      ];
+
+      currentQStep = 0;
+      document.getElementById("modalZoneBadge").textContent = `Petak ${currentPlayer.tile} / 30 • Zon Pulau ${zoneId}`;
+      document.getElementById("modalIslandTitle").textContent = bank.title;
+
+      const modal = document.getElementById("questionModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      renderModalQuestion();
+    }
+
+    function renderModalQuestion() {
+      const qData = activeTurnQuestions[currentQStep];
+      const badge = document.getElementById("modalQuestionBadge");
+      badge.textContent = qData.label;
+      badge.className = qData.isHots
+        ? "inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-red-600 text-yellow-200 ring-2 ring-yellow-300"
+        : "inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-blue-800 text-white";
+
+      document.getElementById("modalProgressText").textContent = `Soalan ${currentQStep + 1} daripada 3`;
+      document.getElementById("modalQuestionText").textContent = qData.q;
+
+      const optionsBox = document.getElementById("modalOptionsBox");
+      optionsBox.innerHTML = "";
+      document.getElementById("modalFeedbackBox").classList.add("hidden");
+      document.getElementById("modalNextBtn").classList.add("hidden");
+
+      qData.options.forEach((optText, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "w-full text-left px-3.5 py-2.5 rounded-xl border-2 border-amber-900 bg-white hover:bg-amber-100 text-amber-950 font-bold text-xs md:text-sm transition flex items-center gap-2.5";
+        btn.innerHTML = `<span class="w-6 h-6 rounded-full bg-amber-900 text-amber-100 font-extrabold flex items-center justify-center text-xs shrink-0">${String.fromCharCode(65 + idx)}</span> <span>${optText}</span>`;
+        btn.onclick = () => evaluateAnswer(idx, btn);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function evaluateAnswer(choiceIdx, btnEl) {
+      const qData = activeTurnQuestions[currentQStep];
+      const allBtns = document.querySelectorAll("#modalOptionsBox button");
+      allBtns.forEach(b => b.disabled = true);
+
+      const fb = document.getElementById("modalFeedbackBox");
+      fb.classList.remove("hidden");
+
+      if (choiceIdx === qData.answer) {
+        btnEl.classList.replace("bg-white", "bg-emerald-200");
+        currentPlayer.score += qData.points;
+        fb.className = "p-3 rounded-xl text-xs font-bold mb-3 bg-emerald-100 border-2 border-emerald-700 text-emerald-950";
+        fb.innerHTML = `Betul! (+${qData.points} Markah) — ${qData.exp}`;
+      } else {
+        btnEl.classList.replace("bg-white", "bg-red-200");
+        allBtns[qData.answer].classList.replace("bg-white", "bg-emerald-200");
+        fb.className = "p-3 rounded-xl text-xs font-bold mb-3 bg-red-100 border-2 border-red-700 text-red-950";
+        fb.innerHTML = `Kurang Tepat! Jawapan: ${qData.options[qData.answer]}. — ${qData.exp}`;
+      }
+
+      updateShipPosition();
+      saveRanking();
+
+      const nextBtn = document.getElementById("modalNextBtn");
+      nextBtn.classList.remove("hidden");
+      nextBtn.textContent = currentQStep < 2 ? "Soalan Seterusnya →" : (currentPlayer.tile >= 30 ? "Buka Peti Harta Karun!" : "Teruskan Pelayaran");
+    }
+
+    function nextQuestionStep() {
+      if (currentQStep < 2) {
+        currentQStep++;
+        renderModalQuestion();
+      } else {
+        const modal = document.getElementById("questionModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        isMoving = false;
+        if (currentPlayer.tile >= 30) openFinishModal();
+      }
+    }
+
+    function openStudentModal() {
+      const m = document.getElementById("studentModal");
+      m.classList.remove("hidden");
+      m.classList.add("flex");
+      document.getElementById("playerNameInput").focus();
+    }
+
+    function registerAndStart() {
+      const nameVal = document.getElementById("playerNameInput").value.trim();
+      if (!nameVal) {
+        alert("Sila tulis nama murid terlebih dahulu!");
+        return;
+      }
+      currentPlayer = { name: nameVal, score: 0, tile: 0 };
+      isMoving = false;
+      document.getElementById("studentModal").classList.add("hidden");
+      document.getElementById("studentModal").classList.remove("flex");
+      updateShipPosition();
+      saveRanking();
+    }
+
+    function openFinishModal() {
+      document.getElementById("finishPlayerName").textContent = currentPlayer.name;
+      document.getElementById("finishPlayerScore").textContent = currentPlayer.score;
+      const m = document.getElementById("finishModal");
+      m.classList.remove("hidden");
+      m.classList.add("flex");
+    }
+
+    function closeFinishAndNewStudent() {
+      document.getElementById("finishModal").classList.add("hidden");
+      document.getElementById("finishModal").classList.remove("flex");
+      openStudentModal();
+    }
+
+    function playAgainSameStudent() {
+      document.getElementById("finishModal").classList.add("hidden");
+      document.getElementById("finishModal").classList.remove("flex");
+      currentPlayer.tile = 0;
+      currentPlayer.score = 0;
+      isMoving = false;
+      updateShipPosition();
+    }
+
+    function saveRanking() {
+      if (!currentPlayer.name) return;
+      const idx = rankings.findIndex(r => r.name.toLowerCase() === currentPlayer.name.toLowerCase());
+      if (idx >= 0) {
+        rankings[idx].score = Math.max(rankings[idx].score, currentPlayer.score);
+        rankings[idx].tile = Math.max(rankings[idx].tile, currentPlayer.tile);
+      } else {
+        rankings.push({ name: currentPlayer.name, score: currentPlayer.score, tile: currentPlayer.tile });
+      }
+      rankings.sort((a, b) => b.score - a.score);
+      localStorage.setItem("pirateSainsTahun5Rankings", JSON.stringify(rankings));
+      renderRankingList();
+    }
+
+    function renderRankingList() {
+      const box = document.getElementById("rankingContainer");
+      box.innerHTML = "";
+      rankings.forEach((p, i) => {
+        const rankLabel = i === 0 ? "1" : i === 1 ? "2" : i === 2 ? "3" : `#${i + 1}`;
+        const active = currentPlayer.name && p.name.toLowerCase() === currentPlayer.name.toLowerCase();
+        const row = document.createElement("div");
+        row.className = `flex items-center justify-between p-2 rounded-xl border ${
+          active ? "bg-amber-500/30 border-yellow-300" : "bg-amber-950/75 border-amber-700"
+        }`;
+        row.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-amber-400 text-amber-950 font-black text-xs">${rankLabel}</span>
+            <div>
+              <div class="font-extrabold text-xs text-amber-100 leading-tight">${p.name}</div>
+              <div class="text-[10px] text-cyan-300 font-bold">Petak ${p.tile}/30</div>
+            </div>
+          </div>
+          <div class="font-black text-yellow-400 text-xs">${p.score} m</div>
+        `;
+        box.appendChild(row);
+      });
+    }
+
+    function clearRanking() {
+      if (confirm("Padam semua rekod ranking murid?")) {
+        rankings = [];
+        localStorage.removeItem("pirateSainsTahun5Rankings");
+        renderRankingList();
+      }
+    }
+
+    renderBoardTiles();
+    renderRankingList();
+    updateShipPosition();
+  </script>
+</body>
+</html>
