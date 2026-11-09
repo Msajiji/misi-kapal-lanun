@@ -32,7 +32,6 @@
       color: #3b1704;
       box-shadow: 0 6px 14px rgba(0,0,0,0.5);
     }
-    /* Lautan Tropika Sebenar dengan Kesan Ombak */
     .ocean-viewport {
       background:
         radial-gradient(circle at 64% 16%, rgba(250, 204, 21, 0.5) 0%, rgba(56, 189, 248, 0.4) 20%, transparent 35%),
@@ -76,7 +75,6 @@
     .board-tile:hover {
       transform: translate(-50%, -50%) scale(1.25);
     }
-    /* DADU BESAR & CANTIK DENGAN KESAN 3D */
     .big-dice {
       width: 68px;
       height: 68px;
@@ -88,7 +86,7 @@
       align-items: center;
       justify-content: center;
       font-size: 38px;
-      font-black: 900;
+      font-weight: 900;
       color: #78350f;
       transition: transform 0.2s;
     }
@@ -116,7 +114,7 @@
         </span>
       </div>
       <span class="hidden md:inline-block text-xs bg-amber-500/20 border border-amber-400 text-amber-200 px-2.5 py-1 rounded-full font-bold">
-        Sains Tahun 5 KSSR
+        Sains Tahun 5 KSSR (100 Soalan Bank)
       </span>
     </div>
 
@@ -146,19 +144,17 @@
   <!-- RUANG UTAMA -->
   <main class="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-2.5 p-2.5">
 
-    <!-- KIRI/TENGAH: PETA KEPULAUAN SEBENAR & DADU BESAR -->
+    <!-- KIRI/TENGAH: PETA KEPULAUAN & DADU BESAR -->
     <section class="lg:col-span-3 ocean-viewport rounded-2xl border-4 border-amber-500 shadow-2xl relative min-h-[600px] overflow-hidden">
 
-      <!-- SEPANDUK KIRI ATAS -->
       <div class="absolute top-2.5 left-2.5 z-30 pointer-events-none">
         <div class="wood-frame rounded-2xl px-3.5 py-1.5 border-2 border-amber-400 shadow-xl">
           <div class="text-[10px] uppercase tracking-widest text-amber-200 font-extrabold">Sains Tahun 5 KSSR</div>
           <div class="pirate-font text-xl md:text-2xl text-amber-300 drop-shadow">Misi Kapal Lanun</div>
-          <div class="text-[11px] font-extrabold text-amber-100">3 Soalan + 1 KBAT Setiap Hentian</div>
+          <div class="text-[11px] font-extrabold text-amber-100">Anti-Repeat 100 Q Bank</div>
         </div>
       </div>
 
-      <!-- KOMPAS KANAN ATAS -->
       <div class="absolute top-2.5 right-2.5 z-30 pointer-events-none">
         <svg viewBox="0 0 100 100" class="w-16 h-16 drop-shadow-lg">
           <circle cx="50" cy="50" r="42" fill="rgba(15, 23, 42, 0.75)" stroke="#f59e0b" stroke-width="3"/>
@@ -174,23 +170,20 @@
         </svg>
       </div>
 
-      <!-- GRAFIK PULAU REALISTIK & TERPERINCI -->
+      <!-- GRAFIK PULAU REALISTIK -->
       <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 620" preserveAspectRatio="none">
         <defs>
-          <!-- Gradien Pasir Pulau Sebenar -->
           <radialGradient id="realIslandSand" cx="50%" cy="55%" r="50%">
             <stop offset="0%" stop-color="#fef08a"/>
             <stop offset="65%" stop-color="#eab308"/>
             <stop offset="85%" stop-color="#ca8a04"/>
             <stop offset="100%" stop-color="#78350f" stop-opacity="0.8"/>
           </radialGradient>
-          <!-- Gradien Hutan Gunung Hijau -->
           <radialGradient id="mountainGreen" cx="50%" cy="40%" r="50%">
             <stop offset="0%" stop-color="#86efac"/>
             <stop offset="50%" stop-color="#22c55e"/>
             <stop offset="100%" stop-color="#14532d"/>
           </radialGradient>
-          <!-- Gradien Air Terjun -->
           <linearGradient id="waterfallBlue" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#e0f2fe"/>
             <stop offset="50%" stop-color="#38bdf8"/>
@@ -198,7 +191,6 @@
           </linearGradient>
         </defs>
 
-        <!-- Buih Ombak Sekeliling Pulau -->
         <ellipse cx="115" cy="500" rx="120" ry="65" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
         <ellipse cx="465" cy="495" rx="115" ry="62" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
         <ellipse cx="760" cy="425" rx="110" ry="58" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
@@ -207,11 +199,10 @@
         <ellipse cx="265" cy="250" rx="115" ry="62" fill="none" stroke="#7dd3fc" stroke-width="5" opacity="0.4"/>
         <ellipse cx="620" cy="115" rx="160" ry="75" fill="none" stroke="#fde047" stroke-width="6" opacity="0.65"/>
 
-        <!-- Garisan Laluan Pelayaran Berputus-putus -->
         <path d="M 120 490 C 230 520, 350 520, 465 495 C 580 480, 670 460, 760 425 C 840 380, 880 320, 860 255 C 770 265, 650 285, 535 300 C 420 290, 340 275, 265 250 C 370 180, 480 140, 620 115"
               fill="none" stroke="#ffffff" stroke-width="5" stroke-dasharray="10,10" stroke-linecap="round" opacity="0.9"/>
 
-        <!-- Pelabuhan Permulaan (Dermaga Kayu & Pondok) -->
+        <!-- Pelabuhan Permulaan -->
         <g transform="translate(30, 415)">
           <ellipse cx="90" cy="85" rx="98" ry="52" fill="url(#realIslandSand)"/>
           <ellipse cx="85" cy="75" rx="78" ry="38" fill="url(#mountainGreen)"/>
@@ -221,7 +212,7 @@
           <polygon points="105,-5 145,5 105,16" fill="#dc2626"/>
         </g>
 
-        <!-- 1. Pulau Teka-Teki (Gunung Berapi Kecil & Monolit Purba) -->
+        <!-- Pulau 1 -->
         <g transform="translate(375, 425)">
           <ellipse cx="90" cy="70" rx="98" ry="50" fill="url(#realIslandSand)"/>
           <path d="M 50 65 Q 80 15 110 65 Z" fill="#78716c" stroke="#44403c" stroke-width="2"/>
@@ -229,7 +220,7 @@
           <text x="90" y="48" text-anchor="middle" fill="#fde047" font-size="34" font-weight="900">?</text>
         </g>
 
-        <!-- 2. Pulau Sains (Pulau Berhutan Lebat & Kelalang Sains) -->
+        <!-- Pulau 2 -->
         <g transform="translate(675, 355)">
           <ellipse cx="85" cy="70" rx="95" ry="48" fill="url(#realIslandSand)"/>
           <ellipse cx="85" cy="62" rx="75" ry="36" fill="url(#mountainGreen)"/>
@@ -237,7 +228,7 @@
           <polygon points="77,15 93,15 93,28 112,62 58,62 77,28" fill="url(#waterfallBlue)" stroke="#ffffff" stroke-width="3"/>
         </g>
 
-        <!-- 3. Pulau Cabaran (Pulau Tebing Batu & Sasaran Memanah) -->
+        <!-- Pulau 3 -->
         <g transform="translate(775, 185)">
           <ellipse cx="85" cy="70" rx="95" ry="48" fill="url(#realIslandSand)"/>
           <path d="M 45 68 Q 85 20 125 68 Z" fill="#57534e" stroke="#292524" stroke-width="2"/>
@@ -246,7 +237,7 @@
           <circle cx="90" cy="40" r="6" fill="#dc2626"/>
         </g>
 
-        <!-- 4. Pulau Strategi (Kuil Batu Purba & Tangga Bertingkat) -->
+        <!-- Pulau 4 -->
         <g transform="translate(445, 225)">
           <ellipse cx="90" cy="72" rx="100" ry="52" fill="url(#realIslandSand)"/>
           <ellipse cx="90" cy="64" rx="80" ry="40" fill="url(#mountainGreen)"/>
@@ -254,7 +245,7 @@
           <rect x="70" y="26" width="40" height="18" fill="#a8a29e" stroke="#44403c" stroke-width="2"/>
         </g>
 
-        <!-- 5. Pulau Kerjasama (Kubu Kayu & Pesisir Pantai Cantik) -->
+        <!-- Pulau 5 -->
         <g transform="translate(175, 180)">
           <ellipse cx="90" cy="70" rx="98" ry="50" fill="url(#realIslandSand)"/>
           <ellipse cx="90" cy="62" rx="78" ry="38" fill="url(#mountainGreen)"/>
@@ -262,23 +253,20 @@
           <polygon points="55,34 85,12 115,34" fill="#b45309" stroke="#451a03" stroke-width="2"/>
         </g>
 
-        <!-- 6. Pulau Harta Karun (Gunung Kembar, Air Terjun & Peti Emas) -->
+        <!-- Pulau 6 -->
         <g transform="translate(485, 30)">
           <circle cx="135" cy="65" r="75" fill="#fde047" opacity="0.35"/>
           <ellipse cx="135" cy="85" rx="138" ry="58" fill="url(#realIslandSand)"/>
           <ellipse cx="135" cy="75" rx="118" ry="46" fill="url(#mountainGreen)"/>
-          <!-- Gunung Kembar -->
           <path d="M 75 80 Q 110 20 140 80 Q 170 25 205 80 Z" fill="#047857" stroke="#065f46" stroke-width="2"/>
-          <!-- Air Terjun Menengah -->
           <path d="M 125 45 Q 120 70 115 100 L 135 102 Q 140 70 135 45 Z" fill="url(#waterfallBlue)" opacity="0.95"/>
-          <!-- Peti Harta Karun Emas Besar -->
           <rect x="110" y="34" width="52" height="34" rx="5" fill="#ca8a04" stroke="#fef08a" stroke-width="3"/>
           <path d="M 110 34 Q 136 16 162 34 Z" fill="#eab308" stroke="#fef08a" stroke-width="3"/>
           <rect x="131" y="42" width="10" height="14" rx="2" fill="#fef08a"/>
         </g>
       </svg>
 
-      <!-- LABEL NAMA PULAU SEBENAR -->
+      <!-- LABEL NAMA PULAU -->
       <div class="absolute inset-0 pointer-events-none z-20">
         <div style="left:12%; top:88%" class="absolute -translate-x-1/2 -translate-y-1/2 sand-banner px-2.5 py-0.5 rounded-xl font-extrabold text-[11px] flex items-center gap-1">
           <span class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[9px]">M</span>
@@ -310,7 +298,6 @@
         </div>
       </div>
 
-      <!-- PETAK LALUAN (1 - 30) -->
       <div id="boardTilesContainer" class="absolute inset-0 z-20"></div>
 
       <!-- KAPAL LANUN 3D -->
@@ -334,26 +321,22 @@
         </svg>
       </div>
 
-      <!-- KAWALAN DADU BESAR & CANTIK (KIRI BAWAH) -->
+      <!-- KAWALAN DADU BESAR -->
       <div class="absolute bottom-2.5 left-2.5 z-30 flex items-center gap-3 wood-frame p-3 rounded-2xl">
         <button id="rollDiceBtn" onclick="rollDiceTurn()"
                 class="bg-gradient-to-b from-yellow-300 via-amber-400 to-amber-600 hover:from-yellow-200 hover:to-amber-500 text-amber-950 font-extrabold px-5 py-3 rounded-xl shadow-xl border-2 border-white flex items-center gap-3.5 transition active:scale-95">
-          <!-- Dadu Besar -->
-          <div id="diceVisual" class="big-dice">
-            🎲
-          </div>
+          <div id="diceVisual" class="big-dice">🎲</div>
           <div class="text-left">
             <div class="text-base leading-tight font-black">BALING DADU</div>
-            <div class="text-[11px] font-bold text-amber-900">Jawab 3 Soalan Sains</div>
+            <div class="text-[11px] font-bold text-amber-900">100 Soalan Unik</div>
           </div>
         </button>
 
         <div id="turnMessage" class="text-xs font-bold text-amber-100 max-w-[210px] leading-snug">
-          Klik dadu besar untuk belayar! Setiap hentian ada 3 soalan Sains Tahun 5 (termasuk 1 KBAT).
+          Klik dadu besar untuk belayar! Sistem anti-ulangan diaktifkan.
         </div>
       </div>
 
-      <!-- PETA MISI KANAN BAWAH -->
       <div class="absolute bottom-2.5 right-2.5 z-30 sand-banner rounded-2xl p-2.5 w-52 text-xs hidden sm:block">
         <div class="wood-frame text-amber-200 font-extrabold text-center py-0.5 rounded-lg mb-1.5 text-[11px] uppercase">
           Peta Misi
@@ -376,7 +359,7 @@
 
     </section>
 
-    <!-- KANAN: RANKING PEMAIN -->
+    <!-- RANKING -->
     <aside class="wood-frame rounded-2xl p-3.5 flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between border-b-2 border-amber-400 pb-2 mb-2.5">
@@ -405,20 +388,16 @@
 
   </main>
 
-  <!-- MODAL PENDAFTARAN MURID -->
+  <!-- MODAL PENDAFTARAN -->
   <div id="studentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
     <div class="sand-banner rounded-2xl max-w-md w-full p-5">
       <div class="wood-frame text-center py-2 rounded-xl mb-3">
         <h2 class="pirate-font text-2xl text-amber-300">Pendaftaran Kapten</h2>
       </div>
-      <p class="text-xs font-bold text-center mb-3">
-        Sila tulis nama murid sebelum memulakan pelayaran!
-      </p>
-
+      <p class="text-xs font-bold text-center mb-3">Sila tulis nama murid sebelum memulakan pelayaran!</p>
       <label class="block text-xs font-extrabold uppercase mb-1">Nama Murid:</label>
       <input id="playerNameInput" type="text" placeholder="Contoh: Rayyan / Aisyah"
              class="w-full px-3.5 py-2.5 rounded-xl border-2 border-amber-900 bg-white text-amber-950 font-extrabold mb-4 focus:outline-none" />
-
       <button onclick="registerAndStart()"
               class="w-full wood-frame hover:brightness-110 text-amber-300 font-extrabold py-2.5 rounded-xl text-base transition">
         Mula Pelayaran Misi
@@ -426,34 +405,22 @@
     </div>
   </div>
 
-  <!-- MODAL SOALAN (3 SOALAN + 1 KBAT) -->
+  <!-- MODAL SOALAN -->
   <div id="questionModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
     <div class="sand-banner rounded-2xl max-w-2xl w-full p-5">
       <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-amber-900 pb-2.5 mb-3">
         <div>
-          <span id="modalZoneBadge" class="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-900 text-amber-200">
-            Zon Pulau 1
-          </span>
-          <h3 id="modalIslandTitle" class="pirate-font text-2xl text-amber-950 mt-0.5">
-            Cabaran Pulau Teka-Teki
-          </h3>
+          <span id="modalZoneBadge" class="text-[11px] font-extrabold uppercase px-2 py-0.5 rounded bg-amber-900 text-amber-200">Zon Pulau 1</span>
+          <h3 id="modalIslandTitle" class="pirate-font text-2xl text-amber-950 mt-0.5">Cabaran Pulau Teka-Teki</h3>
         </div>
         <div class="text-right">
-          <span id="modalQuestionBadge" class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-blue-800 text-white">
-            Soalan 1 / 3 • Konsep (+10m)
-          </span>
-          <div id="modalProgressText" class="text-[11px] font-extrabold text-amber-900 mt-0.5">
-            Soalan 3 ialah Soalan KBAT
-          </div>
+          <span id="modalQuestionBadge" class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-blue-800 text-white">Soalan 1 / 3</span>
+          <div id="modalProgressText" class="text-[11px] font-extrabold text-amber-900 mt-0.5">Soalan KBAT</div>
         </div>
       </div>
-
       <p id="modalQuestionText" class="text-sm md:text-base font-extrabold text-amber-950 mb-3 leading-snug"></p>
-
       <div id="modalOptionsBox" class="space-y-2 mb-3"></div>
-
       <div id="modalFeedbackBox" class="hidden p-3 rounded-xl text-xs font-bold mb-3"></div>
-
       <div class="flex justify-end">
         <button id="modalNextBtn" onclick="nextQuestionStep()"
                 class="hidden wood-frame text-amber-200 font-extrabold px-5 py-2 rounded-xl text-sm">
@@ -469,22 +436,14 @@
       <div class="wood-frame py-2.5 rounded-xl mb-3">
         <h2 class="pirate-font text-3xl text-amber-300">Pulau Harta Karun Ditawan!</h2>
       </div>
-      <p class="text-xs font-bold mb-3">
-        Tahniah! Kapal lanun anda berjaya tiba di Petak 30 dan membuka Peti Harta Karun Emas!
-      </p>
-
+      <p class="text-xs font-bold mb-3">Tahniah! Kapal lanun anda berjaya tiba di Petak 30 dan membuka Peti Harta Karun Emas!</p>
       <div class="bg-amber-100 border-2 border-amber-800 rounded-xl p-3 mb-4">
         <div class="text-xs font-extrabold">Kapten: <span id="finishPlayerName"></span></div>
         <div class="text-2xl font-black text-amber-900 mt-1">Markah Akhir: <span id="finishPlayerScore"></span></div>
       </div>
-
       <div class="flex gap-2.5">
-        <button onclick="closeFinishAndNewStudent()" class="flex-1 wood-frame text-amber-300 font-extrabold py-2.5 rounded-xl text-sm">
-          Murid Lain
-        </button>
-        <button onclick="playAgainSameStudent()" class="flex-1 bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold py-2.5 rounded-xl border-2 border-white text-sm">
-          Main Semula
-        </button>
+        <button onclick="closeFinishAndNewStudent()" class="flex-1 wood-frame text-amber-300 font-extrabold py-2.5 rounded-xl text-sm">Murid Lain</button>
+        <button onclick="playAgainSameStudent()" class="flex-1 bg-emerald-700 hover:bg-emerald-600 text-white font-extrabold py-2.5 rounded-xl border-2 border-white text-sm">Main Semula</button>
       </div>
     </div>
   </div>
@@ -524,79 +483,150 @@
       { id: 30, x: 62, y: 18, type: "finish",  zone: 6, islandName: "Pulau 6: Pulau Harta Karun" }
     ];
 
+    // BANK 100 SOALAN SAINS TAHUN 5 KSSR (DIBAHAGIKAN KEPADA 6 ZON PULAU)
     const ZONE_QUESTIONS = {
       1: {
-        title: "Pulau Teka-Teki • Manusia (Rangka & Peredaran Darah)",
+        title: "Pulau Teka-Teki • Manusia (Rangka, Sendi & Darah)",
         conceptPool: [
-          { q: "Apakah fungsi utama tulang rusuk dalam sistem rangka manusia?", options: ["Melindungi otak", "Melindungi organ dalaman seperti peparu dan jantung", "Menyokong berat badan", "Membolehkan jari membengkok"], answer: 1, exp: "Tulang rusuk melindungi organ lembut utama di bahagian dada iaitu jantung dan peparu." },
-          { q: "Bahagian manakah yang menghubungkan dua tulang untuk membolehkan pergerakan berlaku?", options: ["Sendi", "Otot jantung", "Salur darah", "Peparu"], answer: 0, exp: "Sendi ialah tempat pertemuan dua atau lebih tulang yang membolehkan anggota badan bergerak." },
-          { q: "Organ manakah yang mengepam darah ke peparu dan ke seluruh tubuh manusia?", options: ["Ginjal", "Perut", "Jantung", "Otak"], answer: 2, exp: "Jantung bertindak mengepam darah tanpa henti ke seluruh tubuh." }
+          { q: "Apakah fungsi utama tulang rusuk?", options: ["Melindungi otak", "Melindungi organ peparu dan jantung", "Menyokong berat kaki", "Menggerakkan tangan"], answer: 1, exp: "Tulang rusuk melindungi organ utama di dada." },
+          { q: "Sendi pada bahagian lutut dikategorikan sebagai sendi yang membolehkan pergerakan...", options: ["Satu arah sahaja", "Semua arah", "Tidak boleh bergerak langsung", "Berputar 360 darjah"], answer: 0, exp: "Sendi lutut membolehkan kaki diluruskan dan dibengkokkan ke satu arah." },
+          { q: "Apakah organ yang bertindak mengepam darah ke seluruh tubuh?", options: ["Hati", "Jantung", "Ginjal", "Usus"], answer: 1, exp: "Jantung ialah pam berotot utama." },
+          { q: "Darah yang kaya dengan karbon dioksida akan dipam dari jantung ke...", options: ["Peparu", "Otak", "Perut", "Kaki"], answer: 0, exp: "Darah dihantar ke peparu untuk pertukaran gas." },
+          { q: "Sistem peredaran darah manusia terdiri daripada jantung, salur darah dan...", options: ["Darah", "Tulang", "Otot", "Kulit"], answer: 0, exp: "Darah mengangkut oksigen, nutrien dan bahan buangan." },
+          { q: "Apakah nama sendi yang terdapat pada bahagian bahu manusia?", options: ["Sendi lesung", "Sendi engsel", "Sendi peluru (lesung)", "Sendi geluncur"], answer: 2, exp: "Sendi lesung membolehkan pergerakan bebas ke semua arah." },
+          { q: "Tulang manakah yang melindungi bahagian otak kita?",options: ["Tengkorak", "Pelvis", "Kolum vertebral", "Tibia"], answer: 0, exp: "Tengkorak ialah tempurung tulang yang keras melindungi otak." },
+          { q: "Antara berikut, yang manakah BUKAN komponen sistem peredaran darah?", options: ["Jantung", "Salur darah", "Darah", "Peparu (sebagai organ respirasi)"], answer: 3, exp: "Peparu adalah organ pernafasan, manakala jantung, salur darah & darah membentuk sistem peredaran." },
+          { q: "Apakah bahan yang dibawa oleh sel darah merah ke seluruh sel badan?", options: ["Karbon dioksida", "Oksigen", "Air tulen", "Urea sahaja"], answer: 1, exp: "Sel darah merah mengikat oksigen daripada peparu." },
+          { q: "Mengapakah kita memerlukan rangka badan yang kukuh?", options: ["Untuk memberi sokongan dan bentuk kepada tubuh", "Untuk menghasilkan makanan sendiri", "Untuk bernafas di dalam air", "Untuk mencernakan makanan"], answer: 0, exp: "Rangka memberi bentuk dan sokongan kepada badan." },
+          { q: "Salur darah yang membawa darah keluar dari jantung ke seluruh badan ialah...", options: ["Arteri", "Vena", "Kapilari", "Urat saraf"], answer: 0, exp: "Arteri membawa darah beroksigen keluar dari jantung." },
+          { q: "Salur darah seni yang sangat halus dan dindingnya nipis dinamakan...", options: ["Kapilari", "Arteri", "Vena", "Aorta"], answer: 0, exp: "Kapilari membolehkan pertukaran gas berlaku di sel badan." }
         ],
         hotsPool: [
-          { q: "[KBAT] Mengapakah kecederaan pada tulang belakang sangat berbahaya sehingga boleh menyebabkan kelumpuhan?", options: ["Kerana tulang belakang mengepam darah ke kaki", "Kerana tulang belakang melindungi saraf tunjang yang menghantar isyarat pergerakan dari otak", "Kerana tulang belakang menghasilkan oksigen", "Kerana semua sendi lutut bersambung pada leher"], answer: 1, exp: "Info KBAT: Tulang belakang melindungi saraf tunjang. Jika tercedera, isyarat dari otak ke anggota badan akan terputus." }
+          { q: "[KBAT] Mengapakah kecederaan pada tulang belakang sangat berbahaya?", options: ["Kerana ia mengepam darah", "Kerana ia melindungi saraf tunjang yang mengawal isyarat badan", "Kerana ia menghasilkan sel darah putih", "Kerana ia mengawal suhu badan"], answer: 1, exp: "Tulang belakang melindungi saraf tunjang penghubung otak." },
+          { q: "[KBAT] Degupan jantung meningkat semasa berlari kerana...", options: ["Badan memerlukan lebih banyak oksigen dan tenaga", "Jantung mahu berhenti bekerja", "Suhu sejuk", "Otot menghendaki air"], answer: 0, exp: "Otot cergas memerlukan lebih banyak oksigen." },
+          { q: "[KBAT] Jika seseorang mengalami masalah pendarahan teruk, apakah kesan langsung terhadap sistem peredarannya?", options: ["Tekanan darah menurun dan oksigen lambat sampai ke sel", "Jantung menjadi lebih besar", "Tulang menjadi lembut", "Badan menghasilkan lebih banyak gigi"], answer: 0, exp: "Kehilangan banyak darah mengurangkan pengangkutan oksigen." },
+          { q: "[KBAT] Mengapakah atlet marathon mempunyai jantung yang lebih efisien berbanding orang biasa?", options: ["Otot jantung mereka menjadi kuat akibat latihan kardio kerap", "Mereka mempunyai lebih banyak jantung", "Jantung mereka tidak berdegup", "Saiz jantung mereka sekecil guli"], answer: 0, exp: "Latihan konsisten menguatkan otot jantung." }
         ]
       },
       2: {
         title: "Pulau Sains • Kemandirian Haiwan & Tumbuhan",
         conceptPool: [
-          { q: "Bagaimanakah tenggiling dan ulat gonggok melindungi diri daripada musuh?", options: ["Memutuskan anggota badan", "Menggulungkan diri", "Menyemburkan dakwat hitam", "Mempunyai sengat beracun"], answer: 1, exp: "Tenggiling dan ulat gonggok menggulungkan diri apabila terancam." },
-          { q: "Apakah ciri khas buah kelapa yang membolehkannya dipencarkan melalui air?", options: ["Mempunyai cangkuk", "Mempunyai sabut berongga udara dan kulit kalis air", "Bersaiz halus dan berbulu", "Meletup apabila kering"], answer: 1, exp: "Sabut berongga udara membolehkan buah kelapa terapung di permukaan air." },
-          { q: "Pokok keembung dan pokok getah memencarkan biji benih melalui...", options: ["Aliran air", "Tiupan angin", "Mekanisme letupan", "Haiwan"], answer: 2, exp: "Buah getah dan keembung mengering dan meletup untuk melontarkan biji benih." }
+          { q: "Bagaimanakah landak melindungi dirinya daripada musuh?", options: ["Menyemburkan dakwat", "Mempunyai duri tajam", "Menggulungkan badan", "Menukar warna kulit"], answer: 1, exp: "Duri tajam mencederakan pemangsa." },
+          { q: "Apakah ciri tumbuhan yang hidup di kawasan berangin kencang di pantai?", options: ["Daun lebar", "Batang berair", "Daun berpecah-pecah atau berurat tirus", "Akar pendek"], answer: 2, exp: "Daun tirus mengurangkan rintangan angin." },
+          { q: "Pokok kelapa memencarkan biji benih melalui...", options: ["Angin", "Air", "Letupan", "Haiwan"], answer: 1, exp: "Sabut berongga membolehkan buah kelapa terapung." },
+          { q: "Haiwan manakah yang menjaga anaknya?", options: ["Kura-kura", "Kucing", "Katak", "Pepatung"], answer: 1, exp: "Kucing ialah mamalia yang menyusukan anak." },
+          { q: "Apakah fungsi akar panjang pada pokok akasia di padang pasir?", options: ["Mencari air jauh di dalam tanah", "Menyerap cahaya matahari", "Menghalau haiwan", "Menghasilkan buah"], answer: 0, exp: "Akar panjang menyerap air bawah tanah." },
+          { q: "Pokok semalu menguncupkan daunnya apabila disentuh untuk...", options: ["Mencari makanan", "Melindungi diri daripada musuh", "Menyerap air", "Menghasilkan bunga"], answer: 1, exp: "Mengelakkan daripada dimakan haiwan." },
+          { q: "Biji benih lalang dipencarkan melalui...", options: ["Angin", "Air", "Letupan", "Mekanisme sendiri"], answer: 0, exp: "Bulu halus membolehkan lalang ditiup angin." },
+          { q: "Haiwan yang hidup di iklim sangat sejuk biasanya mempunyai...", options: ["Lapisan lemak tebal di bawah kulit", "Sisik licin", "Sayap besar", "Kaki panjang"], answer: 0, exp: "Lemak tebal memerangkap haba badan." },
+          { q: "Buah getah dipencarkan melalui cara...", options: ["Letupan lenggai", "Air", "Angin", "Makan oleh burung"], answer: 0, exp: "Lenggai merekah dan meletup apabila kering." },
+          { q: "Apakah tujuan haiwan berhijrah ke tempat lain?", options: ["Mencari iklim lebih baik dan sumber makanan", "Bermain salji", "Menyembunyikan diri", "Menukar kulit"], answer: 0, exp: "Migrasi demi kemandirian semasa musim sejuk/kemarau." },
+          { q: "Tumbuhan bergetah seperti nangka mengeluarkan getah melekit untuk...", options: ["Menghalang serangga daripada memakannya", "Menarik perhatian burung", "Menyerap air hujan", "Menghasilkan buah manis"], answer: 0, exp: "Getah melekit memerangkap atau meracuni perosak." },
+          { q: "Ciri buah berasa manis dan berwarna terang adalah penyesuaian untuk...", options: ["Menarik haiwan memakannya supaya biji benih dipencarkan", "Menolak air hujan", "Melindungi daripada angin", "Menyerap nutrien tanah"], answer: 0, exp: "Menarik burung/haiwan pemakan buah." }
         ],
         hotsPool: [
-          { q: "[KBAT] Dalam siratan makanan di sawah padi (Padi → Tikus → Ular → Helang), apakah yang berlaku kepada hasil padi jika semua ular ditangkap?", options: ["Hasil padi meningkat mendadak", "Populasi tikus membiak banyak dan memusnahkan tanaman padi sehingga hasil padi merosot", "Burung helang makan pokok padi", "Tiada perubahan berlaku"], answer: 1, exp: "Info KBAT: Tanpa ular sebagai pemangsa, populasi tikus meningkat mendadak dan merosakkan tanaman padi." }
+          { q: "[KBAT] Jika semua pengeluar (tumbuhan hijau) dalam satu habitat pupus, apakah akibatnya kepada karnivor?", options: ["Karnivor mati kelaparan kerana herbivor sumber makanan mereka turut pupus", "Karnivor menjadi herbivor", "Karnivor bertambah banyak", "Tiada kesan"], answer: 0, exp: "Rantaian makanan bermula dari tumbuhan." },
+          { q: "[KBAT] Mengapakah pokok paya bakur mempunyai akar bernafas (pneumatofor) yang terkeluar dari lumpur?", options: ["Untuk menyerap oksigen dari udara kerana tanah lumpur kurang oksigen", "Untuk menyerap garam laut", "Untuk menahan pokok daripada tumbang", "Untuk menghasilkan bunga"], answer: 0, exp: "Tanah berlumpur tepu air kekurangan oksigen." },
+          { q: "[KBAT] Ular sawa boleh menelan mangsa yang lebih besar daripada saiz kepalanya kerana...", options: ["Rahang bawahnya boleh merenggang dengan sangat luas", "Tulang rusuknya boleh putus", "Ia mempunyai gigi taring beracun", "Badannya diperbuat daripada getah"], answer: 0, exp: "Anatomi rahang fleksibel membolehkan mangsa besar ditelan." },
+          { q: "[KBAT] Mengapakah sesetengah biji benih mempunyai cangkuk atau bulu tajam?",options: ["Untuk melekat pada bulu haiwan atau pakaian manusia bagi tujuan pemcaran", "Untuk dijadikan senjata membunuh", "Untuk menarik perhatian serangga", "Untuk menyerap air hujan"], answer: 0, exp: "Mekanisme lekat pada hos/haiwan." }
         ]
       },
       3: {
         title: "Pulau Cabaran • Elektrik & Haba",
         conceptPool: [
-          { q: "Litar manakah yang mempunyai nyalaan mentol sama terang walaupun bilangan mentol ditambah?", options: ["Litar bersiri", "Litar selari", "Litar terbuka", "Litar pintas"], answer: 1, exp: "Dalam litar selari, setiap cabang mentol menerima voltan yang sama." },
-          { q: "Apakah yang berlaku kepada suhu sesuatu bahan apabila bahan itu menerima haba?", options: ["Suhu menurun", "Suhu meningkat", "Suhu kekal sifar", "Bahan terus membeku"], answer: 1, exp: "Suhu bahan meningkat apabila menerima haba." },
-          { q: "Apakah unit piawai bagi menyukat suhu?", options: ["Mililiter (ml)", "Darjah Celsius (°C)", "Gram (g)", "Meter (m)"], answer: 1, exp: "Unit piawai suhu ialah darjah Celsius (°C)." }
+          { q: "Litar manakah yang menyebabkan semua mentol terpadam jika satu mentol rosak?", options: ["Litar bersiri", "Litar selari", "Litar tertutup", "Litar pintas"], answer: 0, exp: "Litar bersiri mempunyai satu laluan arus sahaja." },
+          { q: "Apakah unit piawai untuk menyukat suhu?", options: ["Kelvin", "Darjah Celsius (°C)", "Joule", "Watt"], answer: 1, exp: "Termometer sains menggunakan unit °C." },
+          { q: "Bahan apakah yang merupakan konduktor elektrik yang baik?", options: ["Kayu", "Plastik", "Kuprum (Logam)", "Kaca"], answer: 2, exp: "Logam mengalirkan arus elektrik." },
+          { q: "Apakah yang berlaku apabila air dipanaskan sehingga 100°C?", options: ["Air membeku", "Air mendidih dan bertukar menjadi wap", "Air menjadi ais", "Air kekal cecair"], answer: 1, exp: "Takat didih air ialah 100°C." },
+          { q: "Suis dalam litar elektrik berfungsi untuk...", options: ["Memutus dan menyambungkan pengaliran arus elektrik", "Menambah bilangan mentol", "Menukar warna cahaya", "Menyimpan tenaga solar"], answer: 0, exp: "Suis mengawal laluan litar." },
+          { q: "Kabel penghantaran elektrik dipasang kendur sedikit kerana...", options: ["Membolehkan pengecutan pada waktu malam", "Supaya kelihatan cantik", "Supaya burung boleh hinggap", "Mengelakkan kilat"], answer: 0, exp: "Mengelakkan kabel putus semasa mengecut." },
+          { q: "Apakah tenaga yang disimpan di dalam sebiji bateri kering?", options: ["Tenaga kimia", "Tenaga kinetik", "Tenaga suria", "Tenaga nuklear"], answer: 0, exp: "Bateri menyimpan tenaga kimia." },
+          { q: "Penebat haba yang baik ialah...", options: ["Aluminium", "Gabus / Polisterin", "Besi", "Kuprum"], answer: 1, exp: "Polisterin menghalang haba mengalir." },
+          { q: "Apakah kesan jika terlalu banyak peralatan elektrik dipasang pada satu soket?", options: ["Litar pintas atau kebakaran berlaku akibat beban elektrik berlebihan", "Mentol menjadi semakin malap", "Kipas berpusing lebih perlahan", "Tiada apa berlaku"], answer: 0, exp: "Soket beban lampau berbahaya." },
+          { q: "Mercuri di dalam termometer mengembang apabila...", options: ["Menerima haba", "Kehilangan haba", "Dibekukan", "Ditekan kuat"], answer: 0, exp: "Haba menyebabkan cecair mengembang naik." },
+          { q: "Antara berikut, yang manakah sumber tenaga elektrik utama di rumah?", options: ["Stesen jana kuasa elektrik", "Bateri jam", "Buah limau", "Kertas aluminium"], answer: 0, exp: "Tenaga elektrik grid negara dari stesen jana kuasa." },
+          { q: "Apabila ais diletakkan di dalam bilik bersuhu bilik, ia menerima haba dan...", options: ["Mencair menjadi air", "Mendidih dengan cepat", "Menjadi gas serta-merta", "Bertukar menjadi besi"], answer: 0, exp: "Ais menyerap haba persekitaran lalu melebur." }
         ],
         hotsPool: [
-          { q: "[KBAT] Mengapakah kabel elektrik pada tiang elektrik dipasang secara kendur sedikit dan bukannya tegang?", options: ["Kerana tiada alatan menegangkan kabel", "Untuk membolehkan kabel mengecut pada waktu malam yang sejuk tanpa putus", "Untuk mengelakkan burung hinggap", "Supaya arus elektrik mengalir perlahan"], answer: 1, exp: "Info KBAT: Pada waktu sejuk, kabel logam kehilangan haba dan mengecut. Ruang kendur mengelakkan kabel daripada putus." }
+          { q: "[KBAT] Mengapakah pendawaian rumah menggunakan litar selari?", options: ["Supaya setiap peralatan boleh dikawal berasingan dan tidak terjejas jika satu rosak", "Supaya bil elektrik lebih murah", "Supaya semua lampu rosak serentak", "Supaya wayar lebih pendek"], answer: 0, exp: "Litar selari membolehkan suis bebas." },
+          { q: "[KBAT] Jambatan keluli mempunyai ruang kecil (celah pengembangan) di sambungannya. Mengapa?", options: ["Untuk memberi ruang kepada jambatan mengembang ketika cuaca panas tanpa melengkung", "Untuk membolehkan air sungai mengalir", "Untuk hiasan jambatan", "Supaya kenderaan bergerak lebih laju"], answer: 0, exp: "Mengelakkan struktur rosak akibat pengembangan haba." },
+          { q: "[KBAT] Mengapakah pemegang periuk diperbuat daripada plastik atau kayu?", options: ["Kerana plastik dan kayu adalah penebat haba yang baik, melindungi tangan daripada melecur", "Kerana ia murah", "Kerana ia boleh dimakan", "Supaya periuk tidak tenggelam"], answer: 0, exp: "Penebat haba mengelakkan tangan panas." },
+          { q: "[KBAT] Mengapakah burung sering kelihatan mengembang-mengembangkan bulunya pada hari sejuk?", options: ["Untuk memerangkap udara di antara bulu sebagai penebat haba badan", "Untuk terbang lebih tinggi", "Untuk mencuci bulu", "Untuk menarik pasangan"], answer: 0, exp: "Udara terperangkap ialah penebat haba yang sangat baik." }
         ]
       },
       4: {
         title: "Pulau Strategi • Jirim & Pengaratan",
         conceptPool: [
-          { q: "Bahan manakah yang mempunyai bentuk tetap dan tidak mengikut bentuk bekas?", options: ["Air minuman", "Udara di dalam belon", "Guli kaca (Pepejal)", "Minyak masak"], answer: 2, exp: "Pepejal mempunyai bentuk, jisim dan isi padu yang tetap." },
-          { q: "Apakah dua faktor utama yang menyebabkan besi berkarat?", options: ["Cahaya matahari dan angin", "Kehadiran air dan udara (oksigen)", "Kehadiran minyak dan cat", "Suhu sejuk"], answer: 1, exp: "Besi berkarat apabila terdedah kepada air dan oksigen." },
-          { q: "Objek manakah yang BOLEH berkarat jika dibiarkan terdedah kepada hujan?", options: ["Sudu plastik", "Paku besi", "Cincin emas", "Botol kaca"], answer: 1, exp: "Objek daripada besi akan berkarat apabila terdedah kepada air dan udara." }
+          { q: "Jirim terbahagi kepada tiga keadaan iaitu...", options: ["Pepejal, cecair dan gas", "Panas, sejuk dan ais", "Logam, kayu dan plastik", "Air, api dan angin"], answer: 0, exp: "Tiga keadaan jirim asas." },
+          { q: "Apakah proses perubahan keadaan jirim daripada cecair kepada pepejal?", options: ["Pembekuan", "Peleburan", "Penyejatan", "Kondensasi"], answer: 0, exp: "Air menjadi ais melalui pembekuan." },
+          { q: "Faktor utama yang menyebabkan objek besi berkarat ialah...", options: ["Kehadiran air dan oksigen", "Cahaya matahari terik", "Angin kuat", "Ketiadaan cahaya"], answer: 1, exp: "Besi bertindak balas dengan air dan udara." },
+          { q: "Manakah antara objek berikut boleh berkarat?", options: ["Sudu plastik", "Paku besi", "Cincin emas", "Tali nilon"], answer: 1, exp: "Besi/keluli mengalami pengaratan." },
+          { q: "Apakah sifat bagi bahan dalam keadaan gas?", options: ["Tiada bentuk tetap dan tiada isi padu tetap", "Bentuk tetap isi padu tetap", "Bentuk tetap isi padu tidak tetap", "Keras dan padu"], answer: 0, exp: "Gas mengisi seluruh ruang bekas." },
+          { q: "Proses penyejatan air berlaku pada...", options: ["Sebarang suhu di bawah takat didih", "Tepat pada takat didih 100°C", "Suhu 0°C sahaja", "Apabila air dibekukan"], answer: 0, exp: "Penyejatan berlaku perlahan pada permukaan air." },
+          { q: "Cara berkesan untuk mencegah pengaratan pada rantai basikal ialah...", options: ["Menyapu gris atau minyak pelincir", "Merendam dalam air masin", "Membiarkan di bawah hujan", "Membalut dengan kertas basah"], answer: 0, exp: "Gris menghalang air dan oksigen daripada menyentuh besi." },
+          { q: "Wap air di udara bertukar menjadi titisan air hujan melalui proses...", options: ["Kondensasi", "Penyejatan", "Peleburan", "Pemejalwapan"], answer: 0, exp: "Gas sejuk terkondensasi menjadi cecair." },
+          { q: "Antara bahan berikut, yang manakah memenuhi ruang dan mempunyai jisim?", options: ["Jirim", "Bayang-bayang", "Bunyi", "Haba"], answer: 0, exp: "Definisi jirim: mempunyai jisim dan memenuhi ruang." },
+          { q: "Air sirap di dalam jug adalah dalam keadaan...", options: ["Cecair", "Pepejal", "Gas", "Plasma"], answer: 0, exp: "Cecair mengikut bentuk bekas dan isi padu tetap." },
+          { q: "Mengapakah tin makanan bersalut zink/timah?", options: ["Untuk mengelakkan kepingan besi di dalam tin daripada berkarat", "Supaya makanan lebih manis", "Supaya tin menjadi ringan", "Untuk menarik semut"], answer: 0, exp: "Lapisan pelindung menghalang pengaratan." },
+          { q: "Ais krim meleleh di bawah matahari kerana ia mengalami...", options: ["Peleburan (mencair)", "Pembekuan", "Kondensasi", "Penyubliman"], answer: 0, exp: "Pepejal menyerap haba dan melebur menjadi cecair." }
         ],
         hotsPool: [
-          { q: "[KBAT] Sebiji cawan berisi air ais diletakkan di atas meja. Titisan air terbentuk di LUAR dinding cawan. Dari manakah datangnya titisan air itu?", options: ["Air ais meresap menembusi dinding cawan", "Wap air di udara kehilangan haba apabila terkena cawan sejuk lalu terkondensasi menjadi titisan air", "Ais mendidih dan melimpah keluar", "Kaca cawan melebur menjadi air"], answer: 1, exp: "Info KBAT: Wap air di udara mengalami kondensasi apabila terkena permukaan luar cawan yang sejuk." }
+          { q: "[KBAT] Baju yang disidai di ampaian bawah panas terik kering lebih cepat berbanding di dalam rumah. Mengapa?", options: ["Suhu tinggi dan cahaya matahari mempercepatkan kadar penyejatan air", "Baju menjadi ringan", "Angin meniup baju", "Air bertukar menjadi ais"], answer: 0, exp: "Faktor suhu mempercepatkan penyejatan." },
+          { q: "[KBAT] Titisan air terbentuk pada bahagian luar cawan berisi air ais. Dari manakah datangnya air itu?", options: ["Wap air di udara sekeliling mengalami kondensasi apabila terkena dinding cawan sejuk", "Air meresap melalui kaca cawan", "Ais meleleh keluar", "Air liur di udara"], answer: 0, exp: "Kondensasi wap air atmosfera." },
+          { q: "[KBAT] Mengapakah botol kaca berisi penuh air boleh pecah jika diletakkan di dalam bahagian sejuk beku peti sejuk?", options: ["Kerana air mengembang apabila membeku menjadi ais", "Kerana kaca menjadi lembut", "Kerana peti sejuk terlalu panas", "Kerana air bertukar menjadi gas"], answer: 0, exp: "Ais mempunyai isi padu lebih besar berbanding air cair." },
+          { q: "[KBAT] Mengapakah kapal laut yang diperbuat daripada besi berat tidak tenggelam dan tidak cepat berkarat di laut?", options: ["Badan kapal dicat berkala untuk halang air/oksigen dan dibina berongga udara", "Kapal diperbuat daripada plastik nipis", "Air laut menolak besi ke langit", "Garam laut memusnahkan karat"], answer: 0, exp: "Cat pelindung dan reka bentuk rongga apungan." }
         ]
       },
       5: {
         title: "Pulau Kerjasama • Fasa Bulan & Buruj",
         conceptPool: [
-          { q: "Bagaimanakah Bulan kelihatan bercahaya pada waktu malam?", options: ["Bulan memantulkan cahaya Bumi", "Bulan memantulkan cahaya Matahari ke Bumi", "Bulan mengeluarkan cahaya sendiri", "Bulan menyerap cahaya bintang"], answer: 1, exp: "Bulan memantulkan cahaya Matahari ke Bumi." },
-          { q: "Buruj manakah yang berbentuk seperti layang-layang dan menunjuk ke arah Selatan?", options: ["Buruj Biduk", "Buruj Pari", "Buruj Belantik", "Buruj Skorpio"], answer: 1, exp: "Buruj Pari berbentuk layang-layang dan sentiasa menunjuk ke arah Selatan." },
-          { q: "Fasa Bulan Purnama berlaku pada setiap...", options: ["1 haribulan Qamari", "14 hingga 15 haribulan Takwim Qamari", "7 haribulan Qamari", "28 haribulan Qamari"], answer: 1, exp: "Bulan Purnama muncul pada pertengahan bulan Takwim Qamari (14-15 haribulan)." }
+          { q: "Bulan kelihatan bercahaya pada waktu malam kerana...", options: ["Bulan memantulkan cahaya matahari", "Bulan mengeluarkan cahaya sendiri", "Bulan menyerap cahaya bintang", "Bulan terbakar seperti matahari"], answer: 0, exp: "Bulan tidak bercahaya sendiri; ia memantulkan cahaya matahari." },
+          { q: "Berapakah anggaran masa untuk Bulan melengkapkan satu peredaran lengkap mengelilingi Bumi?", options: ["24 jam", "27 1/3 hari (kira-kira sebulan)", "365 hari", "7 hari"], answer: 1, exp: "Tempoh edaran qamari ~27.3 hari." },
+          { q: "Buruj yang berbentuk seperti layang-layang dan menunjuk ke arah Selatan ialah...", options: ["Buruj Pari", "Buruj Biduk", "Buruj Belantik", "Buruj Skorpio"], answer: 0, exp: "Buruj Pari (Crux) penunjuk arah Selatan." },
+          { q: "Fasa Bulan Sabit berlaku apabila...", options: ["Sebahagian kecil permukaan bulan kelihatan cerah", "Bulan langsung tidak kelihatan", "Bulan bulat penuh", "Bulan berbentuk separuh"], answer: 0, exp: "Bentuk sabit kelihatan selepas anak bulan." },
+          { q: "Buruj Biduk (Big Dipper) menyerupai bentuk...", options: ["Senduk / Gayung besar", "Layang-layang", "Kala jengking", "Seorang pemburu"], answer: 0, exp: "Bentuk mangkuk senduk penunjuk Utara." },
+          { q: "Apakah kepentingan buruj kepada pelayar zaman dahulu?", options: ["Menunjuk arah perjalanan di laut malam", "Meramal cuaca esok pagi", "Menangkap ikan di laut", "Menghasilkan tenaga elektrik"], answer: 0, exp: "Navigasi pelayaran malam." },
+          { q: "Fasa Bulan Anak Bulan (New Moon) berlaku apabila...", options: ["Bulan berada di antara Bumi dan Matahari", "Bulan berada di belakang Bumi", "Bulan jatuh ke bumi", "Matahari terpadam"], answer: 0, exp: "Permukaan bulan yang disinari matahari membelakangi bumi." },
+          { q: "Buruj Belantik (Orion) kelihatan seperti bentuk...", options: ["Seorang pemburu memakai talipinggang berbintang tiga", "Seekor ikan besar", "Sebuah rumah", "Pokok kelapa"], answer: 0, exp: "Buruj pemburu terkenal dengan tiga bintang sebaris." },
+          { q: "Berapakah bilangan hari dalam sebulan mengikut Takwim Qamari?", options: ["29 atau 30 hari", "31 hari sahaja", "28 hari tetap", "365 hari"], answer: 0, exp: "Kitaran fasa bulan qamari 29-30 hari." },
+          { q: "Buruj Skorpio (Kala Jengking) kelihatan jelas pada waktu malam di langit selatan semasa musim...", options: ["Tertentu dalam setahun (penghujung tahun)", "Setiap jam siang", "Musim sejuk salji", "Gerhana matahari"], answer: 0, exp: "Kemunculan buruj mengikut musim buruj." },
+          { q: "Adakah buruj bergerak di angkasa?", options: ["Tidak, buruj kelihatan berubah kedudukan kerana putaran Bumi pada paksinya", "Ya, buruj berlari laju", "Ya, buruj jatuh ke bumi", "Buruj tidak wujud"], answer: 0, exp: "Pemerhatian buruj berubah akibat putaran bumi." },
+          { q: "Fasa Bulan Purnama berlaku pada sekitar hari ke-...", options: ["14 atau 15 Takwim Qamari", "1 haribulan", "28 haribulan", "7 haribulan"], answer: 0, exp: "Bulan penuh pada pertengahan bulan qamari." }
         ],
         hotsPool: [
-          { q: "[KBAT] Sebuah kapal nelayan kehilangan kompas pada waktu malam. Mereka ternampak Buruj Biduk di langit. Bagaimanakah mereka menentukan arah?", options: ["Buruj Biduk menunjuk ke arah Selatan", "Hujung mangkuk Buruj Biduk sentiasa menunjuk ke arah Utara", "Mengikut pergerakan awan", "Menunggu sehingga Anak Bulan muncul"], answer: 1, exp: "Info KBAT: Buruj Biduk sentiasa menunjuk ke arah Utara." }
+          { q: "[KBAT] Mengapakah bentuk fasa Bulan kelihatan berubah-ubah dari hari ke hari?", options: ["Kerana kedudukan Bumi, Bulan dan Matahari berubah semasa Bulan mengelilingi Bumi", "Kerana bulan dimakan oleh makhluk asing", "Kerana bulan mengecil dan membesar saiz fizikalnya", "Kerana awan menutup bulan"], answer: 0, exp: "Perubahan sudut pantasan cahaya matahari semasa edaran." },
+          { q: "[KBAT] Jika anda melihat Buruj Biduk pada pukul 8 malam, di manakah kedudukannya pada pukul 12 tengah malam di langit malam yang sama?", options: ["Kedudukannya kelihatan berganjak/berputar sedikit akibat putaran Bumi pada paksi", "Hilang selama-lamanya", "Terus jatuh ke tanah", "Bertukar menjadi Buruj Pari"], answer: 0, exp: "Putaran bumi menyebabkan buruj kelihatan berputar merentasi langit malam." }
         ]
       },
       6: {
-        title: "Pulau Harta Karun • Mesin (Tuas & Takal)",
+        title: "Pulau Harta Karun • Mesin (Tuas, Takal & Gear)",
         conceptPool: [
-          { q: "Apakah tiga komponen utama pada sistem mesin ringkas tuas?", options: ["Beban, daya dan fulkrum", "Takal, tali dan roda", "Skru, baji dan satah condong", "Wayar, suis dan bateri"], answer: 0, exp: "Tuas melibatkan beban, daya dan fulkrum." },
-          { q: "Mesin ringkas manakah yang digunakan pada puncak tiang bendera sekolah?", options: ["Baji", "Takal", "Gear", "Skru"], answer: 1, exp: "Takal digunakan untuk menaikkan bendera dengan menarik tali ke bawah." },
-          { q: "Gunting dan kereta sorong merupakan contoh...", options: ["Mesin ringkas tunggal", "Mesin kompleks", "Bahan bukan logam", "Tenaga boleh baharu"], answer: 1, exp: "Mesin kompleks ialah gabungan lebih daripada satu mesin ringkas." }
+          { q: "Apakah tiga bahagian utama pada sistem mesin ringkas tuas?", options: ["Beban, daya dan fulkrum", "Roda, gandar dan rantai", "Skru, baji dan tali", "Suis, mentol dan bateri"], answer: 0, exp: "Tiga komponen asas tuas." },
+          { q: "Apakah fungsi takal tetap pada tiang bendera?", options: ["Mengubah arah daya tarikan untuk menaikkan bendera", "Menambah berat bendera", "Memanjangkan tiang besi", "Menyejukkan bendera"], answer: 0, exp: "Takal tetap memudahkan tarikan ke bawah." },
+          { q: "Gunting, penyapu dan penjepit ais adalah contoh alatan yang menggunakan prinsip...", options: ["Tuas", "Takal", "Gear", "Satah condong"], answer: 0, exp: "Alatan bertuas." },
+          { q: "Apakah fungsi gigi gear pada sebuah jam tangan mekanikal?", options: ["Memindahkan gerakkan dan mengubah kelajuan atau arah putaran", "Menyimpan air", "Menghasilkan bunyi bising", "Menyerap haba"], answer: 0, exp: "Sistem gear memindahkan tenaga putaran." },
+          { q: "Mesin kompleks ialah...", options: ["Gabungan dua atau lebih mesin ringkas", "Mesin yang tidak boleh berfungsi", "Mesin yang diperbuat daripada emas", "Mesin tiada bahagian bergerak"], answer: 0, exp: "Definisi mesin kompleks." },
+          { q: "Kereta sorong pasir mengaplikasikan prinsip tuas di mana kedudukan beban berada di...", option: ["Tengah (antara fulkrum dan daya)", "Paling hujung pemegang", "Atas roda", "Terbang di udara"], answer: 0, exp: "Tuas kelas kedua: fulkrum di hujung, beban di tengah." },
+          { q: "Apakah ciri mesin lestari?", options: ["Tahan lama, mudah diselenggara, selamat dan tidak mencemarkan alam", "Cepat rosak dan dibuang", "Menggunakan banyak petrol", "Berkarat dalam sehari"], answer: 0, exp: "Kriteria teknologi lestari." },
+          { q: "Satah condong digunakan untuk...", options: ["Memudahkan kerja menaikkan beban berat ke tempat tinggi dengan daya lebih kecil", "Memotong kayu tebal", "Menghisap air", "Menghasilkan tenaga nuklear"], answer: 0, exp: "Satah condong mengurangkan tenaga angkat." },
+          { q: "Sepana dan pemutar skru menggunakan prinsip mesin ringkas...", options: ["Roda dan gandar", "Takal", "Baji", "Tuas kelas 3"], answer: 0, exp: "Pusingan pemutar skru ialah roda dan gandar." },
+          { q: "Baji ialah mesin ringkas yang digunakan untuk...", options: ["Memotong, membelah atau menetapkan kedudukan objek", "Menaikkan bendera", "Mengangkat air", "Menyimpan tenaga"], answer: 0, exp: "Contoh baji: kapak, pisau, paku." },
+          { q: "Jika fulkrum diletakkan lebih dekat dengan beban pada sebatang tuas, apakah kelebihannya?", options: ["Daya yang sedikit diperlukan untuk mengangkat beban berat", "Daya yang besar diperlukan", "Tiada sebarang kesan", "Kayu tuas akan patah"], answer: 0, exp: "Prinsip momen tuas." },
+          { q: "Basikal dikategorikan sebagai mesin kompleks kerana...", options: ["Ia menggabungkan rantai, gear, roda dan gandar, serta tuas brek", "Ia boleh terbang", "Ia tidak mempunyai tayar", "Ia diperbuat daripada kertas"], answer: 0, exp: "Gabungan pelbagai mesin ringkas." }
         ],
         hotsPool: [
-          { q: "[KBAT] Kapten Lanun ingin mengumpil batu besar menggunakan kayu sebagai tuas dan batu kecil sebagai fulkrum. Di manakah batu kecil (fulkrum) patut diletakkan supaya daya paling sedikit diperlukan?", options: ["Sangat jauh daripada batu besar (beban)", "Sedekat yang mungkin dengan batu besar (beban)", "Di atas tangan Kapten", "Di belakang Kapten"], answer: 1, exp: "Info KBAT: Semakin dekat fulkrum dengan beban, semakin sedikit daya diperlukan." }
+          { q: "[KBAT] Mengapakah jalan raya di kawasan bukit tinggi atau gunung dibina secara berpusing-pusing (berzikal) dan bukannya lurus mendaki ke atas?", options: ["Mengaplikasikan prinsip satah condong panjang untuk mengurangkan tenaga enjin kenderaan mendaki cerun curam", "Supaya pemandu hilang arah", "Untuk melambatkan perjalanan", "Supaya hujan tidak turun"], answer: 0, exp: "Satah condong melandai mengurangkan daya tarikan." },
+          { q: "[KBAT] Kapten Lanun ingin menaikkan peti harta berat ke atas kapal menggunakan sistem takal. Takal manakah yang paling sesuai memberikan kelebihan mekanikal mengurangkan tenaga separuh?", options: ["Sistem takal bergabung (takal bergerak dan tetap)", "Takal rosak", "Tali pendek tanpa takal", "Kayu tanpa roda"], answer: 0, exp: "Takal bergerak mengurangkan daya separuh." }
         ]
       }
     };
 
+    // SISTEM PENGURUSAN SOALAN AKTIF (ANTI-REPEAT)
     let currentPlayer = { name: "", score: 0, tile: 0 };
     let isMoving = false;
     let activeTurnQuestions = [];
     let currentQStep = 0;
+    let usedQuestionIds = new Set(); // Menyimpan rekod soalan yang telah dijawab
 
     let rankings = JSON.parse(localStorage.getItem("pirateSainsTahun5Rankings")) || [
       { name: "Muhammad Danish", score: 250, tile: 30 },
@@ -707,21 +737,53 @@
       setTimeout(() => launchThreeQuestionsForCurrentZone(), 500);
     }
 
+    // FUNGSI MEMILIH 3 SOALAN UNIK TANPA BERULANG
+    function getUniqueQuestionsForZone(zoneId) {
+      const bank = ZONE_QUESTIONS[zoneId];
+      
+      // Tapisan konsep yang belum guna
+      let availableConcept = bank.conceptPool.filter(q => !usedQuestionIds.has(q.q));
+      if (availableConcept.length < 2) {
+        // Jika hampir habis, reset rekod soalan zon ini
+        bank.conceptPool.forEach(q => usedQuestionIds.delete(q.q));
+        availableConcept = [...bank.conceptPool];
+      }
+
+      // Tapisan KBAT yang belum guna
+      let availableHots = bank.hotsPool.filter(q => !usedQuestionIds.has(q.q));
+      if (availableHots.length < 1) {
+        bank.hotsPool.forEach(q => usedQuestionIds.delete(q.q));
+        availableHots = [...bank.hotsPool];
+      }
+
+      // Rawak soalan konsep
+      availableConcept.sort(() => Math.random() - 0.5);
+      availableHots.sort(() => Math.random() - 0.5);
+
+      const q1 = availableConcept[0];
+      const q2 = availableConcept[1];
+      const q3 = availableHots[0];
+
+      // Tandakan soalan ini telah digunakan
+      usedQuestionIds.add(q1.q);
+      usedQuestionIds.add(q2.q);
+      usedQuestionIds.add(q3.q);
+
+      return [
+        { ...q1, points: 10, label: "Soalan 1 / 3 • Konsep (+10m)", isHots: false },
+        { ...q2, points: 15, label: "Soalan 2 / 3 • Aplikasi (+15m)", isHots: false },
+        { ...q3, points: 25, label: "Soalan 3 / 3 • Cabaran KBAT (+25m)", isHots: true }
+      ];
+    }
+
     function launchThreeQuestionsForCurrentZone() {
       const landed = BOARD_TILES[currentPlayer.tile];
       const zoneId = landed.zone || 1;
       const bank = ZONE_QUESTIONS[zoneId];
 
-      const shuffledConcept = [...bank.conceptPool].sort(() => Math.random() - 0.5);
-      const shuffledHots = [...bank.hotsPool].sort(() => Math.random() - 0.5);
-
-      activeTurnQuestions = [
-        { ...shuffledConcept[0], points: 10, label: "Soalan 1 / 3 • Konsep (+10m)", isHots: false },
-        { ...shuffledConcept[1], points: 15, label: "Soalan 2 / 3 • Aplikasi (+15m)", isHots: false },
-        { ...shuffledHots[0],    points: 25, label: "Soalan 3 / 3 • Cabaran KBAT (+25m)", isHots: true }
-      ];
-
+      activeTurnQuestions = getUniqueQuestionsForZone(zoneId);
       currentQStep = 0;
+
       document.getElementById("modalZoneBadge").textContent = `Petak ${currentPlayer.tile} / 30 • Zon Pulau ${zoneId}`;
       document.getElementById("modalIslandTitle").textContent = bank.title;
 
@@ -812,6 +874,7 @@
       }
       currentPlayer = { name: nameVal, score: 0, tile: 0 };
       isMoving = false;
+      usedQuestionIds.clear(); // Reset rekod soalan untuk murid baru
       document.getElementById("studentModal").classList.add("hidden");
       document.getElementById("studentModal").classList.remove("flex");
       updateShipPosition();
@@ -838,6 +901,7 @@
       currentPlayer.tile = 0;
       currentPlayer.score = 0;
       isMoving = false;
+      usedQuestionIds.clear();
       updateShipPosition();
     }
 
