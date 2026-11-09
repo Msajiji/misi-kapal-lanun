@@ -114,7 +114,7 @@
         </span>
       </div>
       <span class="hidden md:inline-block text-xs bg-amber-500/20 border border-amber-400 text-amber-200 px-2.5 py-1 rounded-full font-bold">
-        Sains Tahun 5 KSSR (100 Soalan Bank)
+        Sains Tahun 5 • 100 Soalan (Anti-Ulang Sepenuhnya)
       </span>
     </div>
 
@@ -144,14 +144,14 @@
   <!-- RUANG UTAMA -->
   <main class="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-2.5 p-2.5">
 
-    <!-- KIRI/TENGAH: PETA KEPULAUAN & DADU BESAR -->
+    <!-- PETA KEPULAUAN & DADU BESAR -->
     <section class="lg:col-span-3 ocean-viewport rounded-2xl border-4 border-amber-500 shadow-2xl relative min-h-[600px] overflow-hidden">
 
       <div class="absolute top-2.5 left-2.5 z-30 pointer-events-none">
         <div class="wood-frame rounded-2xl px-3.5 py-1.5 border-2 border-amber-400 shadow-xl">
           <div class="text-[10px] uppercase tracking-widest text-amber-200 font-extrabold">Sains Tahun 5 KSSR</div>
           <div class="pirate-font text-xl md:text-2xl text-amber-300 drop-shadow">Misi Kapal Lanun</div>
-          <div class="text-[11px] font-extrabold text-amber-100">Anti-Repeat 100 Q Bank</div>
+          <div class="text-[11px] font-extrabold text-amber-100">Tiada Soalan Berulang untuk Pemain!</div>
         </div>
       </div>
 
@@ -170,7 +170,7 @@
         </svg>
       </div>
 
-      <!-- GRAFIK PULAU REALISTIK -->
+      <!-- GRAFIK PULAU -->
       <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 620" preserveAspectRatio="none">
         <defs>
           <radialGradient id="realIslandSand" cx="50%" cy="55%" r="50%">
@@ -333,7 +333,7 @@
         </button>
 
         <div id="turnMessage" class="text-xs font-bold text-amber-100 max-w-[210px] leading-snug">
-          Klik dadu besar untuk belayar! Sistem anti-ulangan diaktifkan.
+          Klik dadu besar untuk belayar! Sistem anti-ulangan untuk setiap pemain diaktifkan.
         </div>
       </div>
 
@@ -483,7 +483,7 @@
       { id: 30, x: 62, y: 18, type: "finish",  zone: 6, islandName: "Pulau 6: Pulau Harta Karun" }
     ];
 
-    // BANK 100 SOALAN SAINS TAHUN 5 KSSR (DIBAHAGIKAN KEPADA 6 ZON PULAU)
+    // BANK 100 SOALAN SAINS TAHUN 5 KSSR
     const ZONE_QUESTIONS = {
       1: {
         title: "Pulau Teka-Teki • Manusia (Rangka, Sendi & Darah)",
@@ -494,7 +494,7 @@
           { q: "Darah yang kaya dengan karbon dioksida akan dipam dari jantung ke...", options: ["Peparu", "Otak", "Perut", "Kaki"], answer: 0, exp: "Darah dihantar ke peparu untuk pertukaran gas." },
           { q: "Sistem peredaran darah manusia terdiri daripada jantung, salur darah dan...", options: ["Darah", "Tulang", "Otot", "Kulit"], answer: 0, exp: "Darah mengangkut oksigen, nutrien dan bahan buangan." },
           { q: "Apakah nama sendi yang terdapat pada bahagian bahu manusia?", options: ["Sendi lesung", "Sendi engsel", "Sendi peluru (lesung)", "Sendi geluncur"], answer: 2, exp: "Sendi lesung membolehkan pergerakan bebas ke semua arah." },
-          { q: "Tulang manakah yang melindungi bahagian otak kita?",options: ["Tengkorak", "Pelvis", "Kolum vertebral", "Tibia"], answer: 0, exp: "Tengkorak ialah tempurung tulang yang keras melindungi otak." },
+          { q: "Tulang manakah yang melindungi bahagian otak kita?", options: ["Tengkorak", "Pelvis", "Kolum vertebral", "Tibia"], answer: 0, exp: "Tengkorak ialah tempurung tulang yang keras melindungi otak." },
           { q: "Antara berikut, yang manakah BUKAN komponen sistem peredaran darah?", options: ["Jantung", "Salur darah", "Darah", "Peparu (sebagai organ respirasi)"], answer: 3, exp: "Peparu adalah organ pernafasan, manakala jantung, salur darah & darah membentuk sistem peredaran." },
           { q: "Apakah bahan yang dibawa oleh sel darah merah ke seluruh sel badan?", options: ["Karbon dioksida", "Oksigen", "Air tulen", "Urea sahaja"], answer: 1, exp: "Sel darah merah mengikat oksigen daripada peparu." },
           { q: "Mengapakah kita memerlukan rangka badan yang kukuh?", options: ["Untuk memberi sokongan dan bentuk kepada tubuh", "Untuk menghasilkan makanan sendiri", "Untuk bernafas di dalam air", "Untuk mencernakan makanan"], answer: 0, exp: "Rangka memberi bentuk dan sokongan kepada badan." },
@@ -528,7 +528,7 @@
           { q: "[KBAT] Jika semua pengeluar (tumbuhan hijau) dalam satu habitat pupus, apakah akibatnya kepada karnivor?", options: ["Karnivor mati kelaparan kerana herbivor sumber makanan mereka turut pupus", "Karnivor menjadi herbivor", "Karnivor bertambah banyak", "Tiada kesan"], answer: 0, exp: "Rantaian makanan bermula dari tumbuhan." },
           { q: "[KBAT] Mengapakah pokok paya bakur mempunyai akar bernafas (pneumatofor) yang terkeluar dari lumpur?", options: ["Untuk menyerap oksigen dari udara kerana tanah lumpur kurang oksigen", "Untuk menyerap garam laut", "Untuk menahan pokok daripada tumbang", "Untuk menghasilkan bunga"], answer: 0, exp: "Tanah berlumpur tepu air kekurangan oksigen." },
           { q: "[KBAT] Ular sawa boleh menelan mangsa yang lebih besar daripada saiz kepalanya kerana...", options: ["Rahang bawahnya boleh merenggang dengan sangat luas", "Tulang rusuknya boleh putus", "Ia mempunyai gigi taring beracun", "Badannya diperbuat daripada getah"], answer: 0, exp: "Anatomi rahang fleksibel membolehkan mangsa besar ditelan." },
-          { q: "[KBAT] Mengapakah sesetengah biji benih mempunyai cangkuk atau bulu tajam?",options: ["Untuk melekat pada bulu haiwan atau pakaian manusia bagi tujuan pemcaran", "Untuk dijadikan senjata membunuh", "Untuk menarik perhatian serangga", "Untuk menyerap air hujan"], answer: 0, exp: "Mekanisme lekat pada hos/haiwan." }
+          { q: "[KBAT] Mengapakah sesetengah biji benih mempunyai cangkuk atau bulu tajam?", options: ["Untuk melekat pada bulu haiwan atau pakaian manusia bagi tujuan pemcaran", "Untuk dijadikan senjata membunuh", "Untuk menarik perhatian serangga", "Untuk menyerap air hujan"], answer: 0, exp: "Mekanisme lekat pada hos/haiwan." }
         ]
       },
       3: {
@@ -606,7 +606,7 @@
           { q: "Gunting, penyapu dan penjepit ais adalah contoh alatan yang menggunakan prinsip...", options: ["Tuas", "Takal", "Gear", "Satah condong"], answer: 0, exp: "Alatan bertuas." },
           { q: "Apakah fungsi gigi gear pada sebuah jam tangan mekanikal?", options: ["Memindahkan gerakkan dan mengubah kelajuan atau arah putaran", "Menyimpan air", "Menghasilkan bunyi bising", "Menyerap haba"], answer: 0, exp: "Sistem gear memindahkan tenaga putaran." },
           { q: "Mesin kompleks ialah...", options: ["Gabungan dua atau lebih mesin ringkas", "Mesin yang tidak boleh berfungsi", "Mesin yang diperbuat daripada emas", "Mesin tiada bahagian bergerak"], answer: 0, exp: "Definisi mesin kompleks." },
-          { q: "Kereta sorong pasir mengaplikasikan prinsip tuas di mana kedudukan beban berada di...", option: ["Tengah (antara fulkrum dan daya)", "Paling hujung pemegang", "Atas roda", "Terbang di udara"], answer: 0, exp: "Tuas kelas kedua: fulkrum di hujung, beban di tengah." },
+          { q: "Kereta sorong pasir mengaplikasikan prinsip tuas di mana kedudukan beban berada di...", options: ["Tengah (antara fulkrum dan daya)", "Paling hujung pemegang", "Atas roda", "Terbang di udara"], answer: 0, exp: "Tuas kelas kedua: fulkrum di hujung, beban di tengah." },
           { q: "Apakah ciri mesin lestari?", options: ["Tahan lama, mudah diselenggara, selamat dan tidak mencemarkan alam", "Cepat rosak dan dibuang", "Menggunakan banyak petrol", "Berkarat dalam sehari"], answer: 0, exp: "Kriteria teknologi lestari." },
           { q: "Satah condong digunakan untuk...", options: ["Memudahkan kerja menaikkan beban berat ke tempat tinggi dengan daya lebih kecil", "Memotong kayu tebal", "Menghisap air", "Menghasilkan tenaga nuklear"], answer: 0, exp: "Satah condong mengurangkan tenaga angkat." },
           { q: "Sepana dan pemutar skru menggunakan prinsip mesin ringkas...", options: ["Roda dan gandar", "Takal", "Baji", "Tuas kelas 3"], answer: 0, exp: "Pusingan pemutar skru ialah roda dan gandar." },
@@ -621,12 +621,11 @@
       }
     };
 
-    // SISTEM PENGURUSAN SOALAN AKTIF (ANTI-REPEAT)
-    let currentPlayer = { name: "", score: 0, tile: 0 };
+    // PENGURUSAN SESI PEMAIN & REKOD SOALAN UNIK (ANTI-REPEAT PER PEMAIN)
+    let currentPlayer = { name: "", score: 0, tile: 0, usedQuestions: new Set() };
     let isMoving = false;
     let activeTurnQuestions = [];
     let currentQStep = 0;
-    let usedQuestionIds = new Set(); // Menyimpan rekod soalan yang telah dijawab
 
     let rankings = JSON.parse(localStorage.getItem("pirateSainsTahun5Rankings")) || [
       { name: "Muhammad Danish", score: 250, tile: 30 },
@@ -737,26 +736,26 @@
       setTimeout(() => launchThreeQuestionsForCurrentZone(), 500);
     }
 
-    // FUNGSI MEMILIH 3 SOALAN UNIK TANPA BERULANG
-    function getUniqueQuestionsForZone(zoneId) {
+    // FUNGSI UTAMA: MENGELAKKAN SOALAN BERULANG KEPADA PEMAIN SEMASA
+    function getUniqueQuestionsForPlayer(zoneId) {
       const bank = ZONE_QUESTIONS[zoneId];
-      
-      // Tapisan konsep yang belum guna
-      let availableConcept = bank.conceptPool.filter(q => !usedQuestionIds.has(q.q));
+
+      // Tapis soalan konsep yang belum pernah dijawab oleh pemain ini
+      let availableConcept = bank.conceptPool.filter(q => !currentPlayer.usedQuestions.has(q.q));
       if (availableConcept.length < 2) {
-        // Jika hampir habis, reset rekod soalan zon ini
-        bank.conceptPool.forEach(q => usedQuestionIds.delete(q.q));
+        // Jika hampir habis, kosongkan semula memori soalan khusus untuk zon ini
+        bank.conceptPool.forEach(q => currentPlayer.usedQuestions.delete(q.q));
         availableConcept = [...bank.conceptPool];
       }
 
-      // Tapisan KBAT yang belum guna
-      let availableHots = bank.hotsPool.filter(q => !usedQuestionIds.has(q.q));
+      // Tapis soalan KBAT yang belum pernah dijawab
+      let availableHots = bank.hotsPool.filter(q => !currentPlayer.usedQuestions.has(q.q));
       if (availableHots.length < 1) {
-        bank.hotsPool.forEach(q => usedQuestionIds.delete(q.q));
+        bank.hotsPool.forEach(q => currentPlayer.usedQuestions.delete(q.q));
         availableHots = [...bank.hotsPool];
       }
 
-      // Rawak soalan konsep
+      // Acak pilihan soalan
       availableConcept.sort(() => Math.random() - 0.5);
       availableHots.sort(() => Math.random() - 0.5);
 
@@ -764,10 +763,10 @@
       const q2 = availableConcept[1];
       const q3 = availableHots[0];
 
-      // Tandakan soalan ini telah digunakan
-      usedQuestionIds.add(q1.q);
-      usedQuestionIds.add(q2.q);
-      usedQuestionIds.add(q3.q);
+      // Masukkan ke dalam senarai soalan yang telah dijawab oleh pemain ini
+      currentPlayer.usedQuestions.add(q1.q);
+      currentPlayer.usedQuestions.add(q2.q);
+      currentPlayer.usedQuestions.add(q3.q);
 
       return [
         { ...q1, points: 10, label: "Soalan 1 / 3 • Konsep (+10m)", isHots: false },
@@ -781,7 +780,7 @@
       const zoneId = landed.zone || 1;
       const bank = ZONE_QUESTIONS[zoneId];
 
-      activeTurnQuestions = getUniqueQuestionsForZone(zoneId);
+      activeTurnQuestions = getUniqueQuestionsForPlayer(zoneId);
       currentQStep = 0;
 
       document.getElementById("modalZoneBadge").textContent = `Petak ${currentPlayer.tile} / 30 • Zon Pulau ${zoneId}`;
@@ -872,9 +871,9 @@
         alert("Sila tulis nama murid terlebih dahulu!");
         return;
       }
-      currentPlayer = { name: nameVal, score: 0, tile: 0 };
+      // Mulakan sesi baharu dengan memori soalan kosong untuk murid ini
+      currentPlayer = { name: nameVal, score: 0, tile: 0, usedQuestions: new Set() };
       isMoving = false;
-      usedQuestionIds.clear(); // Reset rekod soalan untuk murid baru
       document.getElementById("studentModal").classList.add("hidden");
       document.getElementById("studentModal").classList.remove("flex");
       updateShipPosition();
@@ -900,8 +899,8 @@
       document.getElementById("finishModal").classList.remove("flex");
       currentPlayer.tile = 0;
       currentPlayer.score = 0;
+      currentPlayer.usedQuestions.clear(); // Set semula soalan untuk sesi ulangan
       isMoving = false;
-      usedQuestionIds.clear();
       updateShipPosition();
     }
 
